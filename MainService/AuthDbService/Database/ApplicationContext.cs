@@ -12,7 +12,7 @@ namespace AuthDbService.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql($"Server = 62.113.117.145; Database = authdb; Uid = megauseruser; Pwd = ourbestpwd;");
+            optionsBuilder.UseNpgsql($"");
         }
     }
 }
