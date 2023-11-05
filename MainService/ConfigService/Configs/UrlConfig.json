@@ -1,0 +1,18 @@
+﻿[
+  {
+    "RequestName": "Authorization",
+    "Url": "https://vtbcollaborative.ru/vtbemulation/emulateweb2web"
+  },
+  {
+    "RequestName": "AuthRedirect",
+    "Url": "https://vtbcollaborative.ru/auth/finalize"
+  },
+  {
+    "RequestName": "createaccountcons",
+    "Url": "https://sampleUrl"
+  },
+  {
+    "RequestName": "getaccount",
+    "Url": "https://sampleUrl2"
+  }
+]

@@ -1,0 +1,44 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "MainService.Communicators";
+
+package config;
+
+service Config {
+  rpc GetDb (DbRequest) returns (DbReply);
+  rpc GetUrl (UrlRequest) returns (UrlReply);
+  rpc GetClientInfo (ClientRequest) returns (ClientReply);
+  rpc GetAuth (ARequest) returns (AReply);
+}
+message DbRequest
+{
+  string name = 1;
+}
+message UrlRequest{
+  string urlName = 1;
+}
+message ClientRequest{
+  
+}
+message ARequest
+{}
+ message DbReply
+{
+  string server = 1;
+  string user = 2;
+  string password = 3;
+  string databasename = 4;
+}
+message UrlReply{
+  string url=1;
+}
+message ClientReply{
+  string clientId=1;
+  string clientSecret=2;
+}
+message AReply
+{
+    string ISSUER = 1;
+    string AUDIENCE = 2;
+    string KEY = 3;
+}
