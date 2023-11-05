@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AuthDbService.Managers
 {
-    public class AuthDbService
+    public class AuthDbManager
     {
         public async Task<string> AddUser(UserModel request)
         {

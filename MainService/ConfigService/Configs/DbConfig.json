@@ -1,16 +1,9 @@
 ﻿[
   {
-    "ServiceName": "vtb_db",
+    "ServiceName": "authdb",
     "Server": "db",
     "User": "megauseruser",
     "Password": "ourbestpwd",
-    "DatabaseName": "vtbdb"
-  },
-  {
-    "ServiceName": "vtbcollobaccont_db",
-    "Server": "db",
-    "User": "megauseruser",
-    "Password": "ourbestpwd",
-    "DatabaseName": "accountdb"
+    "DatabaseName": "authdb"
   }
 ]

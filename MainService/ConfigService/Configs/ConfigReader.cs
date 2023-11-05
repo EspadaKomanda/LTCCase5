@@ -41,15 +41,7 @@ public static class ConfigReader
         return null;
     }
 
-    public static async Task<ClientConfig> GetClient()
-    {
-        var json = string.Empty;
-        using (var fs = File.OpenRead("Configs/ClientConfig.json"))
-        using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
-            json = await sr.ReadToEndAsync().ConfigureAwait(false);
-        var configJson = JsonConvert.DeserializeObject<ClientConfig>(json);
-        return configJson;
-    }
+  
     public static async Task<AuthConfig> GetAuth()
     {
         var json = string.Empty;
