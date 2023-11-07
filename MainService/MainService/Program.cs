@@ -1,4 +1,6 @@
 
+using MainService.Communicators;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Additional configuration is required to successfully run gRPC on macOS.
@@ -6,7 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
-
+builder.Services.AddSingleton<ConfigCommunicator>();
+builder.Services.AddSingleton<AuthDbCommunicator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

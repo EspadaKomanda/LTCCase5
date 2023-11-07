@@ -1,0 +1,86 @@
+body {
+  background: #222A35;
+}
+.modal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 8px 8px #54001e;
+  min-width: min(500px, 80%);
+  border-radius: 9px;
+}
+.modal_container {
+  padding: 20px;
+  background-color: #333E4C;
+  text-align: center;
+  border-radius: 9px;
+}
+.modal_container h1 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 29px;
+  color: #FFFFFF;
+  padding: min(80px, 90%) 20px 0px 20px;
+  margin-bottom: 60px;
+  margin-top: 0;
+}
+.modal_container label {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 600;
+}
+.modal_container .email {
+  max-width: min(423px, 80%);
+  height: 50px;
+  background-color: #222A35;
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  margin-bottom: 55px;
+  margin-top: 10px;
+  font-size: 24px;
+}
+.modal_container .pass {
+  max-width: min(423px, 80%);
+  height: 50px;
+  background-color: #222A35;
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  font-size: 24px;
+}
+.modal_container .reg {
+  display: flex;
+  justify-content: space-around;
+}
+.modal_container .reg button {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #333E4C;
+  padding: 16px 90px;
+  background: #73F9CF;
+  border-radius: 10px;
+  font-weight: 700;
+}
+@media screen and (max-width: 500px) {
+  .modal_container .email {
+    font-size: 20px;
+  }
+  .modal_container h1 {
+    font-size: 20px;
+  }
+  .modal_container .reg button {
+    font-size: min(16px, 90%);
+    padding: min(16px, 90%) min(60px, 90%);
+  }
+}
+@media screen and (max-width: 350px) {
+  .modal_container .email {
+    font-size: 14px;
+  }
+  .modal_container h1 {
+    font-size: 16px;
+  }
+}

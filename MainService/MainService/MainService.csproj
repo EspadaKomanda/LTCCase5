@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\authdb.proto" />
     <None Remove="Protos\config.proto" />
   </ItemGroup>
 
@@ -16,10 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\" />
     <Folder Include="Services\" />
+    <Folder Include="Pages\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Protobuf Include="Protos\authdb.proto" />
     <Protobuf Include="Protos\config.proto" />
   </ItemGroup>
 
