@@ -20,12 +20,17 @@ namespace AuthDbService.Managers
                         var state = await ctx.users.AddAsync(new UserModel()
                         {
                             uuid = Guid.NewGuid(),
-                            email = request.email,
+                            email = request.email, 
+                            phone = request.phone,
+                            telegram = request.telegram,
                             firstName = request.firstName,
                             lastName = request.lastName,
                             patronymic = request.patronymic,
                             password = request.password,
-                            role = request.role
+                            position = request.position,
+                            role = request.role,
+                            about = request.about,
+                            avatar = request.avatar
                         });
                         await ctx.SaveChangesAsync();
                         if (state.State == Microsoft.EntityFrameworkCore.EntityState.Added)
@@ -72,11 +77,16 @@ namespace AuthDbService.Managers
                 if (user != null)
                 {
                     user.email = request.email ?? user.email;
+                    user.phone = request.phone ?? user.phone;
+                    user.telegram = request.telegram ?? user.telegram;
                     user.firstName = request.firstName ?? user.firstName;
                     user.lastName = request.lastName ?? user.lastName;
                     user.patronymic = request.patronymic ?? user.patronymic;
                     user.password = request.password ?? user.password;
+                    user.position = request.position ?? user.position;
                     user.role = request.role ?? user.role;
+                    user.about = request.about ?? user.about;
+                    user.avatar = request.avatar ?? user.avatar;
 
                     await ctx.SaveChangesAsync();
                     return "";
@@ -109,11 +119,16 @@ namespace AuthDbService.Managers
                 if (user != null)
                 {
                     user.email = request.email ?? user.email;
+                    user.phone = request.phone ?? user.phone;
+                    user.telegram = request.telegram ?? user.telegram;
                     user.firstName = request.firstName ?? user.firstName;
                     user.lastName = request.lastName ?? user.lastName;
                     user.patronymic = request.patronymic ?? user.patronymic;
                     user.password = request.password ?? user.password;
+                    user.position = request.position ?? user.position;
                     user.role = request.role ?? user.role;
+                    user.about = request.about ?? user.about;
+                    user.avatar = request.avatar ?? user.avatar;
 
                     await ctx.SaveChangesAsync();
                     return "";
