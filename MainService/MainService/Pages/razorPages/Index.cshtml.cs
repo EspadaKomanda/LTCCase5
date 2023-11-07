@@ -38,7 +38,10 @@ namespace MainService.Pages.razorPages
                 HttpContext.Session.SetString("Token", encodedJwt);
                 return RedirectToPage("/Students/TimeTable");
             }
-            Console.WriteLine(userModel.email + ":" + userModel.password);
+            else
+            {
+                return BadRequest();
+            }
         }
         public void OnGet()
         {
