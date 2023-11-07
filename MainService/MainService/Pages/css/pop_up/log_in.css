@@ -1,4 +1,3 @@
-
 body {
   background: #222A35;
 }
@@ -22,7 +21,7 @@ body {
   font-weight: 600;
   line-height: 29px;
   color: #FFFFFF;
-  padding: min(80px, 90%) 20px 0px 20px;
+  padding: 80px 20px 0px 20px;
   margin-bottom: 60px;
   margin-top: 0;
 }
@@ -32,25 +31,26 @@ body {
   font-weight: 600;
 }
 .modal_container .email {
-  max-width: min(423px, 80%);
-  height: 50px;
-  background-color: #222A35;
-  outline: none;
-  border: 0;
-  border-radius: 10px;
-  margin-bottom: 55px;
-  margin-top: 10px;
-  font-size: 24px;
-}
-.modal_container .pass {
-  max-width: min(423px, 80%);
-  height: 50px;
+  max-width: min(300px, 50%);
   background-color: #222A35;
   outline: none;
   border: 0;
   border-radius: 10px;
   margin-bottom: 50px;
+  margin-top: 10px;
   font-size: 24px;
+  padding: 12px 30px 12px 15px;
+}
+.modal_container .pass {
+  max-width: min(300px, 50%);
+  background-color: #222A35;
+  outline: none;
+  border: 0;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  margin-top: 10px;
+  font-size: 24px;
+  padding: 12px 30px 12px 15px;
 }
 .modal_container .reg {
   display: flex;
@@ -65,11 +65,15 @@ body {
   border-radius: 10px;
   font-weight: 700;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 620px) {
   .modal_container .email {
     font-size: 20px;
   }
+  .modal_container .pass {
+    font-size: 20px;
+  }
   .modal_container h1 {
+    padding-top: 40px;
     font-size: 20px;
   }
   .modal_container .reg button {
@@ -77,11 +81,16 @@ body {
     padding: min(16px, 90%) min(60px, 90%);
   }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 520px) {
   .modal_container .email {
     font-size: 14px;
   }
+  .modal_container .pass {
+    font-size: 14px;
+  }
   .modal_container h1 {
+    padding-top: 20px;
+    margin-bottom: 30px;
     font-size: 16px;
   }
 }

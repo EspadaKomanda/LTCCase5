@@ -1,0 +1,60 @@
+@main-color: #222A35;
+@second-color: #333E4C;
+@third-color: #73F9CF;
+@fourth-color: #FE095F;
+@fifth-color: #2D2B61;
+@sixth-color: #55D4ED;
+@seventh-color: #6130AE;
+body {
+    background: @main-color;
+}
+
+.user_info1 {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 25px;
+    font-weight: 600;
+
+    div:first-of-type {
+
+        margin-right: 30px;
+
+        p {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+    }
+
+    div:last-of-type {
+        
+        p {
+            text-align: end;
+            margin-bottom: 10px;
+
+            .invite-letter {
+                color: @third-color;
+                font-weight: 500;
+                text-align: end;
+                text-decoration: underline;
+            }
+        }
+
+        .form {
+            color: @fourth-color;
+            font-weight: 400;
+            text-decoration: underline;
+        }
+    }
+}
+
+.user_info2 {
+
+    font-size: 25px;
+    color: #fff;
+
+    .DOB {
+
+    }
+}

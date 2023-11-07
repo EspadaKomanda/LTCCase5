@@ -9,7 +9,7 @@ namespace MainService.Communicators
         private readonly Config.ConfigClient _configClient;
         public ConfigCommunicator()
         {
-            var config = ConfigReader.GetGrpc("ConfigService").Result;
+            var config =   ConfigReader.GetGrpc("ConfigService").Result;
 
             GrpcChannel channel = GrpcChannel.ForAddress($"{config.Name}://{config.Host}:{config.Port}", new GrpcChannelOptions() { Credentials = ChannelCredentials.Insecure });
             _configClient = new Config.ConfigClient(channel);
