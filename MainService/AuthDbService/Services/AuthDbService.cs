@@ -12,11 +12,16 @@ namespace AuthDbService.Services
             var result = await _manager.AddUser(new UserModel()
             {
                 email = request.Email,
+                phone = request.Phone,
+                telegram = request.Telegram,
                 firstName = request.FirstName,
                 lastName = request.LastName,
                 password = request.Password,
                 patronymic = request.Patronymic,
-                role = request.Role
+                position = request.Position,
+                role = request.Role,
+                about = request.About,
+                avatar = request.Avatar,
             });
             return await Task.FromResult(new CreateUserReply()
             {
@@ -59,11 +64,16 @@ namespace AuthDbService.Services
             return await Task.FromResult(new GetReply()
             {
                 Email = result.email,
+                Phone = result.phone,
+                Telegram = result.telegram,
                 FirstName = result.firstName,
                 LastName = result.lastName,
                 Password = result.password,
                 Patronymic = result.patronymic,
+                Position = result.position,
                 Role = result.role,
+                About = result.about,
+                Avatar = result.avatar,
                 Uuid = result.uuid.ToString()
             });
         }
@@ -77,11 +87,16 @@ namespace AuthDbService.Services
             return await Task.FromResult(new GetReply()
             {
                 Email = result.email,
+                Phone = result.phone,
+                Telegram = result.telegram,
                 FirstName = result.firstName,
                 LastName = result.lastName,
                 Password = result.password,
                 Patronymic = result.patronymic,
+                Position = result.position,
                 Role = result.role,
+                About = result.about,
+                Avatar = result.avatar,
                 Uuid = result.uuid.ToString()
             });
         }
@@ -91,11 +106,16 @@ namespace AuthDbService.Services
             var result = await _manager.ModifyUserByEmail(new UserModel()
             {
                 email = request.Email,
+                phone = request.Phone,
+                telegram = request.Telegram,
                 firstName = request.FirstName,
                 lastName = request.LastName,
                 password = request.Password,
                 patronymic = request.Patronymic,
-                role = request.Role
+                position = request.Position,
+                role = request.Role,
+                about = request.About,
+                avatar = request.Avatar,
             });
             return await Task.FromResult(new ModifyReply()
             {
@@ -110,11 +130,16 @@ namespace AuthDbService.Services
             var result = await _manager.ModifyUserByEmail(new UserModel()
             {
                 email = request.Email,
+                phone = request.Phone,
+                telegram = request.Telegram,
                 firstName = request.FirstName,
                 lastName = request.LastName,
                 password = request.Password,
                 patronymic = request.Patronymic,
+                position = request.Position,
                 role = request.Role,
+                about = request.About,
+                avatar = request.Avatar,
                 uuid = accountId
             });
             return await Task.FromResult(new ModifyReply()
