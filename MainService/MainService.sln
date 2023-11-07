@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthDbService", "AuthDbServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigService", "ConfigService\ConfigService.csproj", "{43D0E151-B4DD-4203-90AA-02765669D43F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompaniesDbService", "CompaniesDbService\CompaniesDbService.csproj", "{AB7DAFB3-98D0-47CA-961B-7B2D05900BEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompaniesDbService", "CompaniesDbService\CompaniesDbService.csproj", "{AB7DAFB3-98D0-47CA-961B-7B2D05900BEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

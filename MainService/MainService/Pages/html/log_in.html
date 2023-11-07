@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
+<less>
+
+</less>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,25 +15,25 @@
     <title>Окно авторизации</title>
 </head>
 <body>
-    <div class="fixed-overlay fixed-overlay__modal">
-        <div class="modal">
-            <div class="modal_container">
-                <form action="">
-                    <h1>Войдите в аккаунт</h1>
-                    <label for="username">Логин:</label>
-                    <br>
-                    <input type="email" class="email" placeholder="   example@mail.ru" pattern="/^[\а-яa-z\-\./d\_]+@([\а-яa-z\-/d\_]+\.)+[\а-яa-z\-/d\_]{2,}$/gi;" required>
-                    <br>
-                    <label for="password">Пароль:</label>
-                    <br>
-                    <input type="password" class="pass" placeholder="    password" required>
-                    <div class="reg">
-                        <button type="submit" class="submit" teg>Вход</button>
-                    </div>
-                </form>
-            </div>
+<div class="fixed-overlay fixed-overlay__modal">
+    <div class="modal">
+        <div class="modal_container">
+            <form action="">
+                <h1>Войдите в аккаунт</h1>
+                <label for="username">Логин:</label>
+                <br>
+                <input type="email" class="email" placeholder="   example@mail.ru" pattern="/^[\а-яa-z\-\./d\_]+@([\а-яa-z\-/d\_]+\.)+[\а-яa-z\-/d\_]{2,}$/gi;" required>
+                <br>
+                <label for="password">Пароль:</label>
+                <br>
+                <input type="password" class="pass" placeholder="    password" required>
+                <div class="reg">
+                    <button type="submit" class="submit" teg>Вход</button>
+                </div>
+            </form>
         </div>
     </div>
-    <script src="../js/log_in.js"></script>
+</div>
+<script src="../js/log_in.js"></script>
 </body>
 </html>
