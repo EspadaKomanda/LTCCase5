@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/pop_up/log_in.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Окно авторизации</title>
+</head>
+<body>
+    <div class="fixed-overlay fixed-overlay__modal">
+        <div class="modal">
+            <div class="modal_container">
+                <form action="">
+                    <h1>Войдите в аккаунт</h1>
+                    <label for="username">Логин:</label>
+                    <br>
+                    <input type="email" class="email" placeholder="   example@mail.ru" pattern="/^[\а-яa-z\-\./d\_]+@([\а-яa-z\-/d\_]+\.)+[\а-яa-z\-/d\_]{2,}$/gi;" required>
+                    <br>
+                    <label for="password">Пароль:</label>
+                    <br>
+                    <input type="password" class="pass" placeholder="    password" required>
+                    <div class="reg">
+                        <button type="submit" class="submit" teg>Вход</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../js/log_in.js"></script>
+</body>
+</html>
