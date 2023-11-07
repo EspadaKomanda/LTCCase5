@@ -23,10 +23,12 @@ body {
         font-weight: 600;
         line-height: 29px;
         color: #FFFFFF;
-        padding: min(80px, 100% - 10px) 20px 0px 20px;
+        padding: 80px 20px 0px 20px;
         margin-bottom: 60px;
         margin-top: 0;
     }
+
+    
 
     label {
         text-align: left;
@@ -35,26 +37,27 @@ body {
     }
 
     .email {
-        max-width: min(423px, 100% - 20px);
-        height: 50px;
-        background-color: @main-color;
-        outline: none;
-        border: 0;
-        border-radius: 10px;
-        margin-bottom: 55px;
-        margin-top: 10px;
-        font-size: 24px;
-    }
-
-    .pass {
-        max-width: min(423px, 100% - 20px);
-        height: 50px;
+        max-width: min(300px, 100% - 50%);
         background-color: @main-color;
         outline: none;
         border: 0;
         border-radius: 10px;
         margin-bottom: 50px;
+        margin-top: 10px;
         font-size: 24px;
+        padding: 12px 30px 12px 15px;
+    }
+
+    .pass {
+        max-width: min(300px, 100% - 50%);
+        background-color: @main-color;
+        outline: none;
+        border: 0;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        margin-top: 10px;
+        font-size: 24px;
+        padding: 12px 30px 12px 15px;
     }
 
     .reg {
@@ -72,12 +75,18 @@ body {
         }
     }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 620px) {
+
         .email {
+            font-size: 20px;
+        }
+
+        .pass {
             font-size: 20px;
         }
     
         h1 {
+            padding-top: 40px;
             font-size: 20px;
 
         }
@@ -91,12 +100,18 @@ body {
         }
     }
 
-    @media screen and (max-width: 350px) {
+    @media screen and (max-width: 520px) {
         .email {
+            font-size: 14px;
+        }
+
+        .pass {
             font-size: 14px;
         }
     
         h1 {
+            padding-top: 20px;
+            margin-bottom: 30px;
             font-size: 16px;
         }
     }
