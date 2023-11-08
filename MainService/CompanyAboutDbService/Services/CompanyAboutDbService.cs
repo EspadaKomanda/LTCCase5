@@ -56,10 +56,14 @@ namespace CompanyAboutDbService.Services
 
         public async override Task<GetReply> GetCompanyAboutById(GetCompanyAboutByIdRequest request, ServerCallContext context)
         {
+            //Сделал тут TryParse для Guid как в примерах выше.
+            //Вчера был слишком сонный для этого.
+            Guid companyAboutId;
+            Guid.TryParse(request.Uuid, out companyAboutId);
             var result = await _manager.GetCompanyAboutById(new CompanyAboutModel()
             {
-                title = request.Uuid //Мне не ответили и я забил. В AuthDb точно так же используется email вместо uuid
-            }) ;
+                uuid = companyAboutId
+            });
             return await Task.FromResult(new GetReply()
             {
                 Title = result.title,
