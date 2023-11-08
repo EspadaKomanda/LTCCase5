@@ -1,0 +1,122 @@
+body {
+    background: @main-color;
+}
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 8px 8px darken(@fourth-color, 35%);
+    min-width: min(500px, 100% - 20px);
+    border-radius: 9px;
+}
+
+.modal_container {
+    padding: 20px;
+    background-color: @second-color;
+    text-align: center;
+    border-radius: 9px;
+
+    h1 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 29px;
+        color: #FFFFFF;
+        padding: 80px 20px 0px 20px;
+        margin-bottom: 60px;
+        margin-top: 0;
+    }
+
+    
+
+    label {
+        text-align: left;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .email {
+        max-width: min(300px, 100% - 50%);
+        background-color: @main-color;
+        outline: none;
+        border: 0;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        margin-top: 10px;
+        font-size: 24px;
+        padding: 12px 30px 12px 15px;
+    }
+
+    .pass {
+        max-width: min(300px, 100% - 50%);
+        background-color: @main-color;
+        outline: none;
+        border: 0;
+        border-radius: 10px;
+        margin-bottom: 50px;
+        margin-top: 10px;
+        font-size: 24px;
+        padding: 12px 30px 12px 15px;
+    }
+
+    .reg {
+        display: flex;
+        justify-content: space-around;
+
+        button {
+            font-size: 20px;
+            margin-bottom: 25px;
+            color: @second-color;
+            padding: 16px 90px;
+            background: @third-color;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+    }
+
+    @media screen and (max-width: 620px) {
+
+        .email {
+            font-size: 20px;
+        }
+
+        .pass {
+            font-size: 20px;
+        }
+    
+        h1 {
+            padding-top: 40px;
+            font-size: 20px;
+
+        }
+
+        .reg {
+
+            button {
+                font-size: min(16px, 100% - 10px);
+                padding: min(16px, 100% - 10px) min(60px, 100% - 10px);
+            }
+        }
+    }
+
+    @media screen and (max-width: 520px) {
+        .email {
+            font-size: 14px;
+        }
+
+        .pass {
+            font-size: 14px;
+        }
+    
+        h1 {
+            padding-top: 20px;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+    }
+}
+
+
+
+@import '../vars.less';

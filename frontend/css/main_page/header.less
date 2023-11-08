@@ -1,0 +1,29 @@
+// main: "main_page.less"
+
+
+.header {
+    background-color: @second-color;
+
+    .navigation__list {
+        display: flex;
+        justify-content: start;
+    }
+
+    .navigation__item {
+        padding: 20px;
+        
+
+        a {
+            color: #fff;
+            padding: 20px 70px;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+    }
+    
+    li:first-of-type {
+        background-color: @main-color;
+        border-radius: 0 10px 0 0;
+    }
+}

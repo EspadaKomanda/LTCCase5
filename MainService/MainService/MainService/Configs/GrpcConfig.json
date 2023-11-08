@@ -1,0 +1,12 @@
+﻿[
+  {
+    "Name": "ConfigService",
+    "Host": "config",
+    "Port": 5178
+  },
+  {
+    "Name": "AuthDbService",
+    "Host": "authdb",
+    "Port": 5211
+  }
+]

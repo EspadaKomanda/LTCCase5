@@ -14,9 +14,11 @@ namespace AuthDbService.Database
             Database.EnsureCreated();
         }
 
-        protected async override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var options = await _communicator.GetDb("authdb");
+            var options = _communicator.GetDb("authdb").Result;
+            Console.WriteLine(options.Databasename);
+
             optionsBuilder.UseNpgsql($"Server = {options.Server}; Database ={options.Databasename}; Uid = {options.User}; Pwd = {options.Password};");
         }
     }
