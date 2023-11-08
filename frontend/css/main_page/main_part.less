@@ -7,7 +7,7 @@ body {
     display: flex;
     align-items: center;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     font-size: 25px;
     font-weight: 600;
 
@@ -30,7 +30,6 @@ body {
             .invite-letter {
                 color: @third-color;
                 font-weight: 500;
-                text-align: end;
                 text-decoration: underline;
             }
         }
@@ -39,6 +38,35 @@ body {
             color: @fourth-color;
             font-weight: 400;
             text-decoration: underline;
+            line-height: 30px;
+        }
+    }
+
+    @media screen and (max-width: 1020px){
+        div:last-of-type {
+
+            p {
+                text-align: left;
+            }
+
+            .invite-letter {
+                text-align: left;
+            }
+        }
+    }
+
+    @media screen and (max-width: 720px){
+        flex-wrap: wrap;
+
+        div:last-of-type {
+
+            p {
+                text-align: left;
+            }
+
+            .invite-letter {
+                text-align: left;
+            }
         }
     }
 }
@@ -47,8 +75,36 @@ body {
 
     font-size: 25px;
     color: #fff;
+    
+    p {
+        margin-bottom: 10px;
+    }
 
-    .DOB {
+    input, textarea {
+        margin-bottom: 20px;
+        background: @second-color;
+        padding: 10px 15px;
+        border: 0;
+        border-radius: 10px;
+    }
 
+    .about_you {
+        padding: 10px clamp(30px, 10vw, 130px) 50px 10px;
+    }
+
+    .redact {
+        float: right;
+        padding: 13px 23px ;
+        background: @third-color;
+        border-radius: 10px;
+        border: 0;
+        margin-bottom: 30px;
+    }
+
+}
+
+@media screen and (max-width: 1040px){
+    .container2  {
+        max-width: min(820px, 100%-20px);
     }
 }
