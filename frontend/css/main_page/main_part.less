@@ -11,6 +11,16 @@ body {
     font-size: 25px;
     font-weight: 600;
 
+    .user-photo:hover {
+    opacity: 0.8;
+    }
+
+    .user-photo:active {
+        opacity: 0.6;
+    }
+
+    
+
     div:first-of-type {
 
         margin-right: 30px;
@@ -28,9 +38,12 @@ body {
             margin-bottom: 10px;
 
             .invite-letter {
+                background-color: @main-color;
+                text-decoration: none;
                 color: @third-color;
                 font-weight: 500;
                 text-decoration: underline;
+                cursor: pointer;
             }
         }
 
@@ -104,6 +117,40 @@ body {
     }
 
 }
+
+.container-your-letter {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 8px 8px darken(@fourth-color, 35%);
+    min-width: min(550px, 100% - 20px);
+    min-height: min(500px, 100% - 20px);
+    border-radius: 9px;
+    background-color: @second-color;
+
+    .Your-letter {
+    padding: 20px;
+    text-align: center;
+    border-radius: 9px;
+    }
+
+    .exit {
+        float: left;
+        background: @third-color;
+        border-radius: 10px;
+        padding: 6px 16px;
+        border: 0px;
+    }
+}
+
+.container-your-letter-show {
+    display: inline;
+}
+
+
+
 
 @media screen and (max-width: 1040px){
     .container2  {

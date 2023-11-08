@@ -34,7 +34,7 @@
                     <p>Должность</p>
                 </div>
                 <div>
-                    <p><a class="invite-letter" href="">Пригласительно письмо</a></p>
+                    <p><a class="invite-letter" onclick="javascript:myFunction()">Пригласительно письмо</a></p>
                     <a class="form" href="">Пожалуйста, пройдите анкитирование</a>
                 </div>
             </div>
@@ -51,6 +51,25 @@
                 </div>
             </div>
         </div>
+        <div class="container-your-letter" id="container-letter">
+            <div class="Your-letter">
+                <button class="exit" style=" float: left;" onclick="javascript:exitFunction()"><p>Назад</p></button>
+                <br>
+                <p>Ваш текст</p>
+            </div>
+        </div>
     </main>
+    <script>
+
+        console.log(document.getElementsByClassName("container-your-letter").classList)
+        function myFunction() {
+            document.getElementById("container-letter").classList.toggle("container-your-letter-show");
+        }
+
+        function exitFunction() {
+            document.getElementById("container-letter").classList.remove("container-your-letter-show");
+        }
+
+    </script>
 </body>
 </html>
