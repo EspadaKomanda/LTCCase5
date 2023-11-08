@@ -11,6 +11,14 @@ namespace MainService.Controllers
 
         }
 
+        [Route("main_page.css")]
+        [HttpGet]
+        public async Task GetMainPageCss()
+        {
+            string page = System.IO.File.ReadAllText("MainService/Pages/css/main_page/main_page.css");
+            await HttpContext.Response.WriteAsync(page);
+        }
+
         [Route("styles.css")]
         [HttpGet]
         public async Task GetStyles()
