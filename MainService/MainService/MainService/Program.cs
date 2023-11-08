@@ -17,6 +17,8 @@ builder.Services.AddSingleton<ConfigCommunicator>();
 builder.Services.AddSingleton<AuthDbCommunicator>();
 builder.Services.AddRazorPages();
 builder.Services.AddAuthorization();
+builder.Services.AddSession();
+builder.Services.ConfigureApplicationCookie(options => options.LoginPath = "/");
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -43,20 +45,23 @@ var app = builder.Build();
 app.UseSession();
 
 //add token to request header.
+
+
+app.UseHttpsRedirection();
+
+//add token to request header.
 app.Use(async (context, next) =>
 {
     var token = context.Session.GetString("Token");
+    Console.WriteLine(token);
     if (!string.IsNullOrEmpty(token))
     {
         context.Request.Headers.Add("Authorization", "Bearer " + token);
     }
     await next();
 });
-
-app.UseHttpsRedirection();
-
 app.UseAuthentication();
-
+app.UseSession();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();

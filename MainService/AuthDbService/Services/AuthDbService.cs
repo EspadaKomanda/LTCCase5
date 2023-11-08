@@ -80,9 +80,11 @@ namespace AuthDbService.Services
 
         public async override Task<GetReply> GetUserById(GetUserByIdRequest request, ServerCallContext context)
         {
+            Guid accountId;
+            Guid.TryParse(request.Uuid, out accountId);
             var result = await _manager.GetUserById(new UserModel()
             {
-                email = request.Uuid
+                uuid = accountId
             });
             return await Task.FromResult(new GetReply()
             {

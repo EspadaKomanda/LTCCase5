@@ -4,7 +4,6 @@ option csharp_namespace = "MainService.Communicators";
 
 package authdb;
 
-package authdb;
 
 service AuthDb{
 	rpc CreateUser (CreateUserRequest) returns (CreateUserReply);

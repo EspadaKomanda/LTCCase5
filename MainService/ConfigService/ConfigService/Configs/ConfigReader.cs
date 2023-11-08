@@ -45,7 +45,7 @@ public static class ConfigReader
     public static async Task<AuthConfig> GetAuth()
     {
         var json = string.Empty;
-        using (var fs = File.OpenRead("AuthConfig.json"))
+        using (var fs = File.OpenRead("Configs/AuthConfig.json"))
         using (var sr = new StreamReader(fs, new UTF8Encoding(false)))
             json = await sr.ReadToEndAsync().ConfigureAwait(false);
         var configJson = JsonConvert.DeserializeObject<AuthConfig>(json);

@@ -29,15 +29,7 @@ public class ConfigService : Config.ConfigBase
         });
     }
 
-    public async override Task<ClientReply> GetClientInfo(ClientRequest request, ServerCallContext context)
-    {
-        var client = await ConfigReader.GetClient();
-        return await Task.FromResult(new ClientReply()
-        {
-            ClientId = client.ClietnId,
-            ClientSecret = client.ClientSecret
-        });
-    }
+   
 
     public async override Task<AReply> GetAuth(ARequest request, ServerCallContext context)
     {
