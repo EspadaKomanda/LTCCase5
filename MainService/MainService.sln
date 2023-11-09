@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainService", "MainService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyAboutDbService", "CompanyAboutDbService\CompanyAboutDbService.csproj", "{F96DA70E-3590-4E60-A0FB-E236E9B97273}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnketDbService", "AnketDbService\AnketDbService.csproj", "{AA09A7FC-5C8D-461C-A716-9AAF8EF56333}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F96DA70E-3590-4E60-A0FB-E236E9B97273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F96DA70E-3590-4E60-A0FB-E236E9B97273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F96DA70E-3590-4E60-A0FB-E236E9B97273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA09A7FC-5C8D-461C-A716-9AAF8EF56333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA09A7FC-5C8D-461C-A716-9AAF8EF56333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA09A7FC-5C8D-461C-A716-9AAF8EF56333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA09A7FC-5C8D-461C-A716-9AAF8EF56333}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

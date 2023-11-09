@@ -1,0 +1,7 @@
+﻿[
+  {
+    "Name": "ConfigService",
+    "Host": "config",
+    "Port": 5178
+  }
+]

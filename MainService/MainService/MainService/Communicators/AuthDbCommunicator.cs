@@ -23,5 +23,24 @@ namespace MainService.Communicators
                 Email = email
             });
         }
+
+        public async Task<ModifyReply> Modify(Guid userId,string avatarUrl)
+        {
+            return await _authDbClient.ModifyUserByIdAsync(new ModifyUserByIdRequest()
+            {
+                Uuid = userId.ToString(),
+                About = "",
+                Avatar = avatarUrl,
+                DateOfBirth = "",
+                Email = "",
+                FirstName = "",
+                LastName = "",
+                Password = "",
+                Patronymic = "",
+                Phone = "",
+                Role = "",
+
+            });
+        }
     }
 }

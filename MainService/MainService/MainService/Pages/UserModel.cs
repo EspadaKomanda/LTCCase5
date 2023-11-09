@@ -43,6 +43,7 @@ namespace MainService.Pages.Models
         public string? about { get; set; }
 
         public string? avatar { get; set; }
+        public string? dateOfBirth { get; set; }
     }
 
 }

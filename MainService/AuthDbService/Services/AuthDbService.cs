@@ -22,6 +22,7 @@ namespace AuthDbService.Services
                 role = request.Role,
                 about = request.About,
                 avatar = request.Avatar,
+                dateOfBirth = request.DateOfBirth
             });
             return await Task.FromResult(new CreateUserReply()
             {
@@ -74,7 +75,8 @@ namespace AuthDbService.Services
                 Role = result.role,
                 About = result.about,
                 Avatar = result.avatar,
-                Uuid = result.uuid.ToString()
+                Uuid = result.uuid.ToString(),
+                DateOfBirth = result.dateOfBirth
             });
         }
 
@@ -99,7 +101,8 @@ namespace AuthDbService.Services
                 Role = result.role,
                 About = result.about,
                 Avatar = result.avatar,
-                Uuid = result.uuid.ToString()
+                Uuid = result.uuid.ToString(),
+                DateOfBirth = result.dateOfBirth
             });
         }
 
@@ -118,6 +121,7 @@ namespace AuthDbService.Services
                 role = request.Role,
                 about = request.About,
                 avatar = request.Avatar,
+                dateOfBirth = request.DateOfBirth
             });
             return await Task.FromResult(new ModifyReply()
             {
@@ -142,7 +146,8 @@ namespace AuthDbService.Services
                 role = request.Role,
                 about = request.About,
                 avatar = request.Avatar,
-                uuid = accountId
+                uuid = accountId,
+                dateOfBirth = request.DateOfBirth
             });
             return await Task.FromResult(new ModifyReply()
             {
