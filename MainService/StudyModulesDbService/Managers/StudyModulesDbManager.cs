@@ -7,34 +7,33 @@ namespace StudyModulesDbService.Managers
 {
     public class StudyModulesDbManager
     {
-        public async Task<string> AddCompanyAbout(StudyModuleModel request)
+
+        public async Task<string> AddStudyModule(StudyModuleModel request)
         {
             string ValidationResult = Validate(request);
-            if (ValidationResult=="")
+            if (ValidationResult == "")
             {
                 try
                 {
                     using (ApplicationContext ctx = new ApplicationContext())
                     {
-
-                        var state = await ctx.companyAbouts.AddAsync(new StudyModuleModel()
+                        var state = await ctx.studyModules.AddAsync(new StudyModuleModel()
                         {
                             uuid = Guid.NewGuid(),
-                            title = request.title,
-                            description = request.description,
-                            executives = request.executives,
+                            name = request.name,
+                            asignee = request.asignee
                         });
                         await ctx.SaveChangesAsync();
                         if (state.State == Microsoft.EntityFrameworkCore.EntityState.Added)
                         {
-                            return "Added company successfully";
+                            return "Added big module successfully";
                         }
-                        //Cringe but we wanted a string here
                         return "EntityState.Added is false";
                     }
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                     return ex.ToString();
                 }
             }
@@ -42,76 +41,36 @@ namespace StudyModulesDbService.Managers
             {
                 return ValidationResult;
             }
-          
         }
 
-        public async Task<string> DeleteCompanyAboutById(StudyModuleModel model)
+        private string Validate<T>(T t_model)
         {
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                var companyAbout = ctx.companyAbouts.Where(p => p.uuid == model.uuid).ToList()[0];
-                if (companyAbout != null)
+                if (t_model == null)
                 {
-                    ctx.companyAbouts.Remove(companyAbout);
-                    await ctx.SaveChangesAsync();
-                    return "";
+                    throw new ArgumentNullException(nameof(t_model));
                 }
 
-                return String.Format("Company ({0} does not exist", model.uuid);
-            }
-        }
-
-        public async Task<string> ModifyCompanyAboutById(StudyModuleModel request)
-        {
-            using (ApplicationContext ctx = new ApplicationContext())
-            {
-                var companyAbout = ctx.companyAbouts.Where(p => p.uuid == request.uuid).ToList()[0];
-                if (companyAbout != null)
+                var results = new List<ValidationResult>();
+                var context = new ValidationContext(t_model);
+                string errors = "";
+                if (!Validator.TryValidateObject(t_model, context, results, true))
                 {
-                    companyAbout.title = request.title ?? companyAbout.title;
-                    companyAbout.description = request.description ?? companyAbout.description;
-                    companyAbout.executives = request.executives ?? companyAbout.executives;
-
-                    await ctx.SaveChangesAsync();
-                    return "";
+                    foreach (var error in results)
+                    {
+                        errors += error.ErrorMessage + '\n';
+                    }
                 }
 
-                return $"Company ({request.uuid} does not exist";
+                return errors;
             }
-        }
-
-        public async Task<StudyModuleModel> GetCompanyAboutById(StudyModuleModel request)
-        {
-            var companyAbout = new StudyModuleModel();
-            using (ApplicationContext ctx = new ApplicationContext())
+            catch (Exception ex)
             {
-                companyAbout = await ctx.companyAbouts.FindAsync(request.uuid);
+                Console.WriteLine(ex);
+                return ex.ToString();
             }
-
-            if (companyAbout.title == null)
-            {
-                return await Task.FromResult(new StudyModuleModel());
-            }
-
-            return await Task.FromResult(companyAbout);
-
         }
         
-        private string Validate(StudyModuleModel companyAbout)
-        {
-            var results = new List<ValidationResult>();
-            var context = new ValidationContext(companyAbout);
-            string errors = "";
-            if (!Validator.TryValidateObject(companyAbout, context, results, true))
-            {
-                foreach (var error in results)
-                {
-                    errors+=error.ErrorMessage+'\n';
-                }
-            }
-
-            return errors;
-        }
-
     }
 }
