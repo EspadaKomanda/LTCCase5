@@ -12,7 +12,7 @@ namespace StudyModulesDbService.Database
         public DbSet<StudySubmoduleModel> studySubmodules { get; set; }
         public DbSet<AttachmentModel> attachments { get; set; }
         public DbSet<TestModel> tests { get; set; }
-        public DbSet<Deadline> deadlines { get; set; }
+        public DbSet<DeadlineModel> deadlines { get; set; }
         public ApplicationContext()
         {
             Database.EnsureCreated();

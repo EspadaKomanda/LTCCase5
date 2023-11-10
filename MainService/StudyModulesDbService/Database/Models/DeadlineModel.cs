@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 namespace StudyModulesDbService.Database.Models
 {
-    public class Deadline
+    public class DeadlineModel
     {
         [Key]
         public Guid uuid { get; set; }
