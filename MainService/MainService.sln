@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainService", "MainService\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompanyAboutDbService", "CompanyAboutDbService\CompanyAboutDbService.csproj", "{F96DA70E-3590-4E60-A0FB-E236E9B97273}"
 EndProject
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudyModulesDbService", "StudyModulesDbService\StudyModulesDbService.csproj", "{2739C53B-CDF2-44A5-AD8A-C614F5E5E224}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnketDbService", "AnketDbService\AnketDbService.csproj", "{F27322A3-70EA-4738-986D-638D528C54FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,7 +43,14 @@ Global
 		{F96DA70E-3590-4E60-A0FB-E236E9B97273}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F96DA70E-3590-4E60-A0FB-E236E9B97273}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F96DA70E-3590-4E60-A0FB-E236E9B97273}.Release|Any CPU.Build.0 = Release|Any CPU
-
+		{2739C53B-CDF2-44A5-AD8A-C614F5E5E224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2739C53B-CDF2-44A5-AD8A-C614F5E5E224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2739C53B-CDF2-44A5-AD8A-C614F5E5E224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2739C53B-CDF2-44A5-AD8A-C614F5E5E224}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F27322A3-70EA-4738-986D-638D528C54FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F27322A3-70EA-4738-986D-638D528C54FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F27322A3-70EA-4738-986D-638D528C54FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F27322A3-70EA-4738-986D-638D528C54FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

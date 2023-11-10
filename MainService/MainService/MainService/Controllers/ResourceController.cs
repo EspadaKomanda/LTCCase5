@@ -16,19 +16,39 @@ namespace MainService.Controllers
 
         }
 
-        /* [Route("photo.png")]
-         [HttpGet]
-         public async Task<IActionResult> GetPhoto()
-         {
-             byte[] fileData = System.IO.File.ReadAllBytes("MainService/Pages/img/profile.png");
-             string contentType = MimeTypes.GetMimeType(Path.GetExtension("MainService/Pages/img/profile.png"));
+        [Route("training_modules.css")]
+        [HttpGet]
+        public async Task GetModules()
+        {
+            string page = System.IO.File.ReadAllText("MainService/Pages/css/training_modules.css/training_modules.css");
+            await HttpContext.Response.WriteAsync(page);
+        }
+        [Route("header.less")]
+        [HttpGet]
+        public async Task GetLess()
+        {
+            string page = System.IO.File.ReadAllText("MainService/Pages/css/main_page/header.less");
+            await HttpContext.Response.WriteAsync(page);
+        }
+        [Route("canvassing.css")]
+        [HttpGet]
+        public async Task GetCanvassing()
+        {
+            string page = System.IO.File.ReadAllText("MainService/Pages/css/canvassing/canvassing.css");
+            await HttpContext.Response.WriteAsync(page);
+        }
+        [Route("tick.png")]
+        [HttpGet]
+        public async Task<IActionResult> GetTick()
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes("MainService/Pages/img/tick.png");
+            string contentType = MimeTypes.GetMimeType(Path.GetExtension("MainService/Pages/img/tick.png"));
 
-             return new FileContentResult(fileData, contentType)
-             {
-                 FileDownloadName = "photo.png"
-             };
-         }*/
-
+            return new FileContentResult(fileData, contentType)
+            {
+                FileDownloadName = "tick.png"
+            };
+        }
         [Route("trace.svg")]
         [HttpGet]
         public async Task<IActionResult> GetProfile()

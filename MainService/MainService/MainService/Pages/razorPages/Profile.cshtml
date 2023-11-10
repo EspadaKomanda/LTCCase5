@@ -195,7 +195,7 @@ body {
             </div>
             <div>
                 <p><a class="invite-letter" onclick="javascript:myFunction()">Пригласительно письмо</a></p>
-                <a class="form" href="">Пожалуйста, пройдите анкетирование</a>
+                <a class="form" href="/Anket">Пожалуйста, пройдите анкетирование</a>
             </div>
         </div>
         <form enctype="multipart/form-data" id="fileUp" style="visibility:collapse" method="post">
@@ -222,10 +222,10 @@ body {
                 <p class="number" style="width:165">@Model.userModel.phone</p>
            
                 <div>
-                    
+                    <button class="redact" onclick="redact()">Редактировать</button>
                     @if (Model.userModel.role == "HR")
                     {
-                        <button class="redact" onclick="redact()">Редактировать</button>
+                        
                         <button class="redact">Обучение</button>
                     }
                 </div>
