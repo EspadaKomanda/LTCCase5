@@ -3,6 +3,7 @@ using StudyModulesDbService.Database.Models;
 using Grpc.Core;
 using System.ComponentModel.DataAnnotations;
 using StudyModulesDbService.Services;
+using System.Net.Mail;
 
 namespace StudyModulesDbService.Managers
 {
@@ -127,7 +128,7 @@ namespace StudyModulesDbService.Managers
             }
         }
 
-        public async Task<StudyModuleModel> GetStudyModuleWhole(StudyModuleModel request)
+        public async Task<StudyModule> GetStudyModuleWhole(StudyModuleModel request)
         {
             try
             {
@@ -135,19 +136,81 @@ namespace StudyModulesDbService.Managers
                 using (ApplicationContext ctx = new ApplicationContext())
                 {
                     studyModule = await ctx.studyModules.FindAsync(request.uuid);
-                }
 
-                if (studyModule == null)
-                {
-                    return await Task.FromResult(new StudyModuleModel());
-                }
+                    if (studyModule == null)
+                    {
+                        return await Task.FromResult(new StudyModule());
+                    }
 
-                return await Task.FromResult(studyModule);
+                    var getWholeSubmodule = (StudySubmoduleModel submoduleModel) => {
+                        var uuid = submoduleModel.uuid;
+
+                        if (submoduleModel == null)
+                        {
+                            return new StudySubmodule();
+                        }
+
+                        var attachmentModels = ctx.attachments.Where(x => x.parentId == uuid);
+                        var attachments = 
+                            (from att
+                            in attachmentModels
+                            select new Services.Attachment()
+                            {
+                                ParentId = att.parentId.ToString(),
+                                Url = att.url,
+                                Uuid = att.uuid.ToString()
+                            }).ToList();
+                        var resultSubmodule = new StudySubmodule()
+                        {
+                            Name = submoduleModel.name,
+                            ParentId = submoduleModel.parentId.ToString(),
+                            Text = submoduleModel.text,
+                            Uuid = submoduleModel.uuid.ToString(),
+                        };
+                        resultSubmodule.Attachments.AddRange(attachments);
+                        return resultSubmodule;
+                    };
+
+                    var studySubmodules =
+                        (from i in ctx.studySubmodules
+                         where i.parentId == request.uuid
+                         select getWholeSubmodule(i)).ToList();
+
+                    var tests = from test in ctx.tests
+                                where (test.parentId == request.uuid)
+                                select new Test()
+                                {
+                                    ParentId= test.parentId.ToString(),
+                                    Url = test.url,
+                                    Uuid= test.uuid.ToString()
+                                };
+
+                    var deadlines = from deadline in ctx.deadlines
+                                where (deadline.parentId == request.uuid)
+                                select new Deadline()
+                                {
+                                    ParentId = deadline.parentId.ToString(),
+                                    UserId = deadline.userId.ToString(),
+                                    Datetime = deadline.deadline.ToString(),
+                                    Uuid = deadline.uuid.ToString()
+                                };
+
+                    var studyModuleWhole = new StudyModule() {
+                        Name = studyModule.name,
+                        Asignee = studyModule.asignee,
+                        Uuid = studyModule.uuid.ToString()
+                    };
+                    studyModuleWhole.Submodules.AddRange(studySubmodules);
+                    studyModuleWhole.Tests.AddRange(tests);
+                    studyModuleWhole.Deadlines.AddRange(deadlines);
+
+                    return await Task.FromResult(studyModuleWhole);
+                }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return new StudyModuleModel();
+                return new StudyModule();
             }
         }
 

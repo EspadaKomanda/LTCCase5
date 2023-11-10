@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <None Remove="Protos\config.proto" />
+    <None Remove="Protos\studymodulesdb.proto" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
 
   <ItemGroup>
     <Protobuf Include="Protos\config.proto" />
+    <Protobuf Include="Protos\studymodulesdb.proto" />
   </ItemGroup>
 
 </Project>

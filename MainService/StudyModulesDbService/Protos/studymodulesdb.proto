@@ -4,13 +4,13 @@ option csharp_namespace = "StudyModulesDbService.Services";
 
 package studymodulesdb;
 
-service StudyModulesDb_Service{
+service StudyModulesDb{
 
 	rpc CreateStudyModule(CreateStudyModuleRequest) returns (CreateStudyModuleReply);
 	rpc ModifyStudyModule(ModifyStudyModuleRequest) returns (ModifyStudyModuleReply);
 	rpc DeleteStudyModule(DeleteStudyModuleRequest) returns (DeleteStudyModuleReply);
 	rpc GetStudyModule(GetStudyModuleRequest) returns (GetStudyModuleReply);
-	rpc GetStudyModuleWhole(GetStudyModuleWholeRequest) returns (GetStudyModuleWholeReply);
+	rpc GetStudyModuleWhole(GetStudyModuleWholeRequest) returns (StudyModule);
 
 	rpc CreateStudySubmodule(CreateStudySubmoduleRequest) returns (CreateStudySubmoduleReply);
 	rpc ModifyStudySubmodule(ModifyStudySubmoduleRequest) returns (ModifyStudySubmoduleReply);
@@ -118,8 +118,8 @@ message CreateAttachmentReply{
 }
 message ModifyAttachmentRequest{
 	string uuid = 1;
-	string parentId = 1;
-	string url = 1;
+	string parentId = 2;
+	string url = 3;
 }
 message ModifyAttachmentReply{
 	string reply = 1;
@@ -137,7 +137,6 @@ message GetAttachmentReply{
 	string parentId = 1;
 	string url = 2;
 	string uuid = 3;
-	string uuid	= 4;
 }
 
 //Test
