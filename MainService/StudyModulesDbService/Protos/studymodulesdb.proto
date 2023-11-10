@@ -1,0 +1,238 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "StudyModulesDbService.Services";
+
+package studymodulesdb;
+
+service StudyModulesDb{
+
+	rpc CreateStudyModule(CreateStudyModuleRequest) returns (CreateStudyModuleReply);
+	rpc ModifyStudyModule(ModifyStudyModuleRequest) returns (ModifyStudyModuleReply);
+	rpc DeleteStudyModule(DeleteStudyModuleRequest) returns (DeleteStudyModuleReply);
+	rpc GetStudyModule(GetStudyModuleRequest) returns (GetStudyModuleReply);
+	rpc GetStudyModuleWhole(GetStudyModuleWholeRequest) returns (StudyModule);
+
+	rpc CreateStudySubmodule(CreateStudySubmoduleRequest) returns (CreateStudySubmoduleReply);
+	rpc ModifyStudySubmodule(ModifyStudySubmoduleRequest) returns (ModifyStudySubmoduleReply);
+	rpc DeleteStudySubmodule(DeleteStudySubmoduleRequest) returns (DeleteStudySubmoduleReply);
+	rpc GetStudySubmodule(GetStudySubmoduleRequest) returns (GetStudySubmoduleReply);
+
+	rpc CreateAttachment(CreateAttachmentRequest) returns (CreateAttachmentReply);
+	rpc ModifyAttachment(ModifyAttachmentRequest) returns (ModifyAttachmentReply);
+	rpc DeleteAttachment(DeleteAttachmentRequest) returns (DeleteAttachmentReply);
+	rpc GetAttachment(GetAttachmentRequest) returns (GetAttachmentReply);
+
+	rpc CreateTest(CreateTestRequest) returns (CreateTestReply);
+	rpc ModifyTest(ModifyTestRequest) returns (ModifyTestReply);
+	rpc DeleteTest(DeleteTestRequest) returns (DeleteTestReply);
+	rpc GetTest(GetTestRequest) returns (GetTestReply);
+
+	rpc CreateDeadline(CreateDeadlineRequest) returns (CreateDeadlineReply);
+	rpc ModifyDeadline(ModifyDeadlineRequest) returns (ModifyDeadlineReply);
+	rpc DeleteDeadline(DeleteDeadlineRequest) returns (DeleteDeadlineReply);
+	rpc GetDeadline(GetDeadlineRequest) returns (GetDeadlineReply);
+
+}
+
+//StudyModule
+message CreateStudyModuleRequest{
+	string name = 1;
+	string asignee = 2;
+}
+message CreateStudyModuleReply{
+	string uuid = 1;
+}
+message ModifyStudyModuleRequest{
+	string name = 1;
+	string asignee = 2;
+	string uuid = 3;
+}
+message ModifyStudyModuleReply{
+	string reply = 1;
+}
+message DeleteStudyModuleRequest{
+	string uuid = 1;
+}
+message DeleteStudyModuleReply{
+	string reply = 1;
+}
+message GetStudyModuleRequest{
+	string uuid = 1;
+}
+message GetStudyModuleReply{
+	string name = 1;
+	string asignee = 2;
+	string uuid = 3;
+}
+message GetStudyModuleWholeRequest{
+	string name = 1;
+	string asignee = 2;
+	string uuid = 3;
+	repeated StudySubmodule submodules = 4;
+	repeated Test tests = 5;
+	repeated Deadline deadlines = 6;
+}
+
+//StudySubmodule
+message CreateStudySubmoduleRequest{
+	string name = 1;
+	string parentId = 2;
+	string text = 3;
+}
+message CreateStudySubmoduleReply{
+	string uuid = 1;
+}
+message ModifyStudySubmoduleRequest{
+	string name = 1;
+	string parentId = 2;
+	string text = 3;
+	string uuid = 4;
+}
+message ModifyStudySubmoduleReply{
+	string reply = 1;
+}
+message DeleteStudySubmoduleRequest{
+	string uuid = 1;
+}
+message DeleteStudySubmoduleReply{
+	string reply = 1;
+}
+message GetStudySubmoduleRequest{
+	string uuid = 1;
+}
+message GetStudySubmoduleReply{
+	string name = 1;
+	string parentId = 2;
+	string text = 3;
+	string uuid = 4;
+	repeated Attachment attachments = 5;
+}
+
+//Attachment
+message CreateAttachmentRequest{
+	string url = 1;
+	string parentId = 2;
+}
+message CreateAttachmentReply{
+	string uuid = 1;
+}
+message ModifyAttachmentRequest{
+	string uuid = 1;
+	string parentId = 2;
+	string url = 3;
+}
+message ModifyAttachmentReply{
+	string reply = 1;
+}
+message DeleteAttachmentRequest{
+	string uuid = 1;
+}
+message DeleteAttachmentReply{
+	string reply = 1;
+}
+message GetAttachmentRequest{
+	string uuid = 1;
+}
+message GetAttachmentReply{
+	string parentId = 1;
+	string url = 2;
+	string uuid = 3;
+}
+
+//Test
+message CreateTestRequest{
+	string parentId = 1;
+	string url = 2;
+}
+message CreateTestReply{
+	string uuid = 1;
+}
+message ModifyTestRequest{
+	string parentId = 1;
+	string url = 2;
+	string uuid = 3;
+}
+message ModifyTestReply{
+	string reply = 1;
+}
+message DeleteTestRequest{
+	string uuid = 1;
+}
+message DeleteTestReply{
+	string reply = 1;
+}
+message GetTestRequest{
+	string uuid = 1;
+}
+message GetTestReply{
+	string parentId = 1;
+	string url = 2;
+	string uuid = 3;
+}
+
+//Deadline
+message CreateDeadlineRequest{
+	string parentId = 1;
+	string userId = 2;
+	string deadline = 3;
+}
+message CreateDeadlineReply{
+	string uuid = 1;
+}
+message ModifyDeadlineRequest{
+	string parentId = 1;
+	string userId = 2;
+	string deadline = 3;
+	string uuid = 4;
+}
+message ModifyDeadlineReply{
+	string reply = 1;
+}
+message DeleteDeadlineRequest{
+	string uuid = 1;
+}
+message DeleteDeadlineReply{
+	string reply = 1;
+}
+message GetDeadlineRequest{
+	string uuid = 1;
+}
+message GetDeadlineReply{
+	string parentId = 1;
+	string userId = 2;
+	string datetime = 3;
+	string uuid = 4;
+}
+
+//Objects
+message StudyModule{
+	string name = 1;
+	string asignee = 2;
+	string uuid = 3;
+	repeated StudySubmodule submodules = 4;
+	repeated Test tests = 5;
+	repeated Deadline deadlines = 6;
+}
+message StudySubmodule{
+	string name = 1;
+	string parentId = 2;
+	string text = 3;
+	string uuid = 4;
+	repeated Attachment attachments = 5;
+}
+message Attachment{
+	string parentId = 1;
+	string url = 2;
+	string uuid = 3;
+}
+message Test{
+	string parentId = 1;
+	string url = 2;
+	string uuid = 3;
+}
+message Deadline{
+	string parentId = 1;
+	string userId = 2;
+	string datetime = 3;
+	string uuid = 4;
+}
