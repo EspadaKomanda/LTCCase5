@@ -1,0 +1,172 @@
+// relativeUrls: true, compress: true
+
+.header {
+    background-color: @second-color;
+    margin-bottom: 10px;
+
+    .navigation__list {
+        display: flex;
+        justify-content: start;
+    }
+
+    .navigation__item {
+        padding: 20px 0;
+
+        a {
+            color: #fff;
+            padding: 0 clamp(7px, 2vw, 70px);
+            font-size: clamp(10px, 3vw, 25px);
+            font-weight: 700;
+        }
+    }
+    
+    li:last-of-type {
+        background-color: @main-color;
+        border-radius: 0 10px 0 0;
+    }
+}
+
+body {
+    background-color: @main-color;
+
+    main {
+        width: 100%;
+        max-width: 1040px;
+        margin: 0 auto;
+        color: #fff;
+
+        aside {
+            overflow-y: auto;
+            position: fixed;
+            background-color: @second-color;
+            min-width: min(247px, 100% - 20px);
+            height: 500px;
+            margin-right: 60px;
+            border-radius: 17px 17px;
+            padding: 20px 0 20px 40px;
+            font-size: 25px;
+            font-weight: 700;
+            border: 0;
+
+            .asside__item {
+                margin-bottom: 20px;
+                margin-top: 20px;
+            }
+
+            .asside__sublist {
+                border-left: @third-color 3px solid;
+
+                .asside__subitem {
+                    margin-left: 15px;
+                    margin-bottom: 20px;
+                }
+            }
+
+            span {
+                float: inline-end;
+                font-weight: normal;
+                padding-right: 10px;
+            }
+        }
+
+        aside::-webkit-scrollbar {
+            display: none;
+          }
+           
+          /* Скрываем scrollbar для IE, Edge и Firefox */
+          aside {
+            -ms-overflow-style: none;  /* IE и Edge */
+            scrollbar-width: none;  /* Firefox */
+          }
+
+          .aside-hidden {
+            display: inline;
+          }
+
+        article {
+            justify-content: end;
+            justify-self: right;
+            float: right;
+            max-width: 1053px;
+            .course {
+                padding: 30px 60px;
+
+                .course-button {
+                    display: none;
+                    float: right;
+                    background-color: @third-color;
+                    padding: 10px 15px;
+                    border: 0;
+                    border-radius: 10px;
+                }
+
+                .course__title {
+                    font-size: 30px;
+                    font-weight: 700;
+                    margin-bottom: 20px;
+                }
+
+                .subcourse {
+                    font-size: 25px;
+
+                    .subcourse__title {
+                        margin: 20px 0;
+                        font-size: 25px;
+                    }
+
+                    .subcourse__text {
+                        border-radius: 10px;
+                        padding: 20px;
+                        background-color: @second-color;
+                        width: min(900px, 100% - 15px);
+                        height: 300px;
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+        }
+
+        @media screen and (max-width: 1040px) {
+            aside {
+                min-width: min(240px, 100% - 50px);
+                display: none;
+                padding: 20px 0 20px 10px;
+                font-size: 20px;
+                margin-right: 20px;
+            }
+
+            article {
+                justify-content: start;
+                justify-self: start;
+                float: left;
+
+                .course {
+                    .course-button{
+                    display: block;
+                }
+                }
+
+                
+            }
+          }
+
+    }
+}
+
+
+
+.black-item {
+    background-color: @main-color;
+    border-radius: 10px 0 0 10px;
+    padding: 6px 10px;
+}
+
+.red-text {
+    color: @fourth-color;
+}
+
+.green-text {
+    color: @third-color;
+}
+
+@import '../vars.less';

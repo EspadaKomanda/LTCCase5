@@ -1,0 +1,158 @@
+
+.header { 
+    background: @second-color;
+    min-height: 145px;
+    box-shadow: 1px 0 20px 8px darken(@fourth-color, 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    .header__title {
+        font-size: 24px;
+        color: #fff;
+        margin: 0;
+        max-width: 748px;
+        text-align: center;
+    }
+}
+
+body {
+    background-color: @main-color;
+
+    main {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        
+
+        .question__list {
+            color: #fff;
+            counter-reset: my-counter;
+
+            .question__item {
+                background-color: @second-color;
+                border-radius: 10px;
+                margin-bottom: 30px;
+                position: relative;
+                padding: 10px 15px 15px 15px;
+
+                h2 {
+                    margin-bottom: 80px;
+                }
+
+                .variant__list {
+                    margin-bottom: 40px;
+
+                    .variant__item {
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                        
+                          /* для элемента label связанного с .custom-radio */
+                        input[type = radio]+label {
+                            display: inline-flex;
+                            align-items: center;
+                            user-select: none;
+                        }
+                        
+                        /* создание в label псевдоэлемента  before со следующими стилями */
+                        input[type = radio]+label::before {
+                            content: '';
+                            display: inline-block;
+                            width: 1.3em;
+                            height: 1.3em;
+                            flex-shrink: 0;
+                            flex-grow: 0;
+                            border-radius: 50%;
+                            margin-right: 0.5em;
+                            background-color: @main-color;
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: 70% 70%;
+                        }
+
+                        /* стили для радиокнопки, находящейся в состоянии checked */
+                        input[type = radio]:checked+label::before {
+                            border:  solid @main-color 7px;
+                            background-color: @third-color;
+                            width: 0.7em;
+                            height: 0.7em;
+                        }
+
+                        input[type = checkbox]+label {
+                            display: inline-flex;
+                            align-items: center;
+                            user-select: none;
+                        }
+                        
+                          /* создание в label псевдоэлемента  before со следующими стилями */
+                        input[type = checkbox]+label::before {
+                            content: '';
+                            display: inline-block;
+                            width: 1.3em;
+                            height: 1.3em;
+                            flex-shrink: 0;
+                            flex-grow: 0;
+                            border-radius: 15%;
+                            margin-right: 0.5em;
+                            background-color: @main-color;
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                            background-size: 70% 70%;
+                        }
+
+                          /* стили для радиокнопки, находящейся в состоянии checked */
+                        input[type = checkbox]:checked+label::before {
+                            background-image: url("../../img/галка.png");
+                        }
+
+                        textarea {
+                            background-color: @main-color;
+                            border: 0;
+                            border-radius: 10px;
+                            color: #fff;
+                            min-width:min(600px, 100% - 20px);
+                            height: 100px;
+                        }
+                    }
+                }
+
+                .variant__buttons {
+                    justify-content: end;
+                    display: flex;
+
+                   .variant__answer {
+                    padding: 4px 14px;
+                    font-weight: 700;
+                    border-radius: 5px;
+                    border: 0;
+                    background-color: @third-color;
+                    color: #000;
+                    } 
+                }
+            }
+            
+            .question__item::before {
+                content: counter(my-counter); /* Выводим число */
+                counter-increment: my-counter; /* Увеличиваем значение счётчика */
+                background: @second-color;
+                color: @third-color;
+                width: 48px;
+                height: 48px;
+                display: flex;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 0px;
+                left: -60px;
+                border-radius: 10px;
+                font-weight: 700px;
+                font-size: 25px;
+                box-shadow: 0px 0px 10px 3px darken(@fourth-color, 25%);
+            }
+        }
+    }
+}
+
+@import '../vars.less';
