@@ -12,6 +12,13 @@ service AuthDb{
 	rpc ModifyUserById (ModifyUserByIdRequest) returns (ModifyReply);
 	rpc GetUserByEmail (GetUserByEmailRequest) returns (GetReply);
 	rpc GetUserById (GetUserByIdRequest) returns (GetReply);
+	rpc GetUsers (GetUsersRequest) returns (GetUsersReply);
+}
+message GetUsersRequest{
+
+}
+message GetUsersReply{
+	repeated GetReply users=1;
 }
 message CreateUserRequest{
 	string email = 1;

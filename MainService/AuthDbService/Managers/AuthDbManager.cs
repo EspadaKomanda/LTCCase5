@@ -8,6 +8,22 @@ namespace AuthDbService.Managers
 {
     public class AuthDbManager
     {
+        public async Task<List<UserModel>> GetUsers()
+        {
+            try
+            {
+                using (ApplicationContext ctx = new ApplicationContext())
+                {
+                    return ctx.users.ToList();
+                }
+            }
+            catch(Exception ex) 
+            {
+
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
         public async Task<string> AddUser(UserModel request)
         {
             string ValidationResult = Validate(request);

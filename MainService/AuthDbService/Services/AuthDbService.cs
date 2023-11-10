@@ -7,6 +7,38 @@ namespace AuthDbService.Services
     public class AuthDbService : AuthDb.AuthDbBase
     {
         private AuthDbManager _manager = new AuthDbManager();
+        public override async Task<GetUsersReply> GetUsers(GetUsersRequest request, ServerCallContext context)
+        {
+            var reply = new GetUsersReply();
+            reply.Users.AddRange( await convertList(await _manager.GetUsers()));
+            return reply;
+        }
+        private async Task<List<GetReply>> convertList(List<UserModel> users)
+        {
+            List<UserModel> result = new List<UserModel>();
+            foreach (var VARIABLE in users)
+            {
+                var user = new GetReply()
+                {
+                   About = VARIABLE.about,
+                   Avatar = VARIABLE.avatar,
+                   DateOfBirth = VARIABLE.dateOfBirth,
+                   Email = VARIABLE.email,
+                   FirstName = VARIABLE.firstName,
+                   LastName = VARIABLE.lastName,
+                   Password = VARIABLE.password,
+                   Patronymic = VARIABLE.patronymic,
+                   Phone = VARIABLE.phone,
+                   Position = VARIABLE.position,
+                   Uuid = VARIABLE.uuid.ToString(),
+                   Role = VARIABLE.role,
+                   Telegram = VARIABLE.telegram
+                };
+                anket.QuestionVariants.AddRange(VARIABLE.answerVariants.Split("-_-"));
+                result.Add(anket);
+            }
+            return result;
+        }
         public async override Task<CreateUserReply> CreateUser(CreateUserRequest request, ServerCallContext context)
         {
             var result = await _manager.AddUser(new UserModel()
