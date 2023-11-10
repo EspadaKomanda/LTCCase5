@@ -35,7 +35,7 @@
         .header {
     background-color: #333E4C
 }
-
+    
     .header .navigation__list {
         display: flex;
         justify-content: start
@@ -177,12 +177,18 @@ body {
     </style>
     <div class="container2">
         <div class="user_info1">
-                <img src="/resources/trace.svg" alt="" width="165px">
-                <form action="" method="post" enctype="multipart/form-data">
-                        <label style="visibility:hidden" id="postedFiles" for="file">File</label>
-                        <input style="visibility:hidden" id="file" name="file" type="file" />
-                        <button style="visibility:hidden" id="postedFiles3" onclick="">Upload</button>
-                </form>
+            @{
+                if (Model.userModel.avatar != "")
+                {
+                    <img src="@Model.userModel.avatar" alt="" style="margin-right:10px; border-radius:50%" width="165px">
+                }
+                else
+                {
+                        <img src="/resources/trace.svg" alt="" style="margin-right:10px; border-radius:50%" width="165px">
+                }
+            }
+          
+        
             <div>
                 <p>@Model.userModel.firstName @Model.userModel.lastName @Model.userModel.patronymic</p>
                 <p>@Model.userModel.position</p>
@@ -192,13 +198,28 @@ body {
                 <a class="form" href="">Пожалуйста, пройдите анкетирование</a>
             </div>
         </div>
+        <form enctype="multipart/form-data" id="fileUp" style="visibility:collapse" method="post">
+            <div class="form-group">
+                <label class="file">
+                        <input type="file" asp-for="Upload" style="background: #333E4C; padding: 5px 10px; border: 0; border-radius: 10px; color:#fff" name="Upload" aria-label="File browser example">
+                </label>
+                    <input class="exit" style="border: 0;background-color:#73F9CF ;border-radius: 10px;" type="submit" value="Upload">
+                @{
+                    if (Model.ErrorMessage!="")
+                    {
+                        <span class="mail">@Model.ErrorMessage</span>
+                    }
+                }
+            </div>
+
+        </form>
         <div class="user_info2">
             <p class="">Дата рождения</p>
             <span class="DOB">@Model.userModel.dateOfBirth</span>
             <p class="">Электронная почта</p>
             <span class="mail">@Model.userModel.email</span>
             <p class="">Номер телефона</p>
-            <p class="number">@Model.userModel.phone</p>
+                <p class="number" style="width:165">@Model.userModel.phone</p>
            
                 <div>
                     
@@ -221,13 +242,8 @@ body {
     </div>
     <script>
         function redact() {
-            var inp1 = document.getElementById("postedFiles")
-                var inp2 = document.getElementById("file");
-            var inp3 = document.getElementById("postedFiles3")
+                var inp1 = document.getElementById("fileUp")
             inp1.style["visibility"] = "visible";
-            inp2.style["visibility"] = "visible";
-
-            inp3.style["visibility"] = "visible";
             }
     </script>
     <script>

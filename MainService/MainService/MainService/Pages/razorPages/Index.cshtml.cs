@@ -24,6 +24,7 @@ namespace MainService.Pages.razorPages
         {
             var Auth = await _configCommunicator.GetAuth();
             var result = await _authDbCommunicator.GetUserByEmail(userModel.email);
+            Console.WriteLine(ByteArrayToString(GetHash(userModel.password)));
             if (result.Password== ByteArrayToString(GetHash(userModel.password)))
             {
                 var claims = new List<Claim> { new Claim(ClaimTypes.Email, userModel.email)};

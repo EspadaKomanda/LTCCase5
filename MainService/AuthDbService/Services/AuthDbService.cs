@@ -133,7 +133,7 @@ namespace AuthDbService.Services
         {
             Guid accountId;
             Guid.TryParse(request.Uuid, out accountId);
-            var result = await _manager.ModifyUserByEmail(new UserModel()
+            var result = await _manager.ModifyUserById(new UserModel()
             {
                 email = request.Email,
                 phone = request.Phone,
