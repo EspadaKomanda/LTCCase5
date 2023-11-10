@@ -1,1 +1,168 @@
-.header{background-color:#333E4C}.header .navigation__list{display:flex;justify-content:start}.header .navigation__item{padding:20px}.header .navigation__item a{color:#fff;padding:20px 70px;font-size:25px;font-weight:700}.header li:first-of-type{background-color:#222A35;border-radius:0 10px 0 0}body{background:#222A35}.user_info1{display:flex;align-items:center;margin-top:40px;margin-bottom:20px;font-size:25px;font-weight:600}.user_info1 div:first-of-type{margin-right:30px}.user_info1 div:first-of-type p{color:#fff;margin-bottom:10px}.user_info1 div:last-of-type p{text-align:end;margin-bottom:10px}.user_info1 div:last-of-type p .invite-letter{color:#73F9CF;font-weight:500;text-align:end;text-decoration:underline}.user_info1 div:last-of-type .form{color:#FE095F;font-weight:400;text-decoration:underline}.user_info2{font-size:25px;color:#fff}
+.header {
+    background-color: #333E4C
+}
+
+    .header .navigation__list {
+        display: flex;
+        justify-content: start
+    }
+
+    .header .navigation__item {
+        padding: 20px 0
+    }
+
+        .header .navigation__item a {
+            color: #fff;
+            padding: 0 clamp(7px, 2vw, 70px);
+            font-size: clamp(10px, 3vw, 25px);
+            font-weight: 700
+        }
+
+    .header li:first-of-type {
+        background-color: #222A35;
+        border-radius: 0 10px 0 0
+    }
+
+body {
+    background: #222A35
+}
+
+.user_info1 {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 25px;
+    font-weight: 600
+}
+
+    .user_info1 .user-photo:hover {
+        opacity: .8
+    }
+
+    .user_info1 .user-photo:active {
+        opacity: .6
+    }
+
+    .user_info1 div:first-of-type {
+        margin-right: 30px
+    }
+
+        .user_info1 div:first-of-type p {
+            color: #fff;
+            margin-bottom: 10px
+        }
+
+    .user_info1 div:last-of-type p {
+        text-align: end;
+        margin-bottom: 10px
+    }
+
+        .user_info1 div:last-of-type p .invite-letter {
+            background-color: #222A35;
+            text-decoration: none;
+            color: #73F9CF;
+            font-weight: 500;
+            text-decoration: underline;
+            cursor: pointer
+        }
+
+    .user_info1 div:last-of-type .form {
+        color: #FE095F;
+        font-weight: 400;
+        text-decoration: underline;
+        line-height: 30px
+    }
+
+@media screen and (max-width:1020px) {
+    .user_info1 div:last-of-type p {
+        text-align: left
+    }
+
+    .user_info1 div:last-of-type .invite-letter {
+        text-align: left
+    }
+}
+
+@media screen and (max-width:720px) {
+    .user_info1 {
+        flex-wrap: wrap
+    }
+
+        .user_info1 div:last-of-type p {
+            text-align: left
+        }
+
+        .user_info1 div:last-of-type .invite-letter {
+            text-align: left
+        }
+}
+
+.user_info2 {
+    font-size: 25px;
+    color: #fff
+}
+
+    .user_info2 p {
+        margin-bottom: 20px;
+        margin-top: 40px
+    }
+
+    .user_info2 .DOB, .user_info2 .mail, .user_info2 .number {
+        margin-bottom: 20px;
+        background: #333E4C;
+        padding: 10px 15px;
+        border: 0;
+        border-radius: 10px
+    }
+
+    .user_info2 .about_you {
+        padding: 10px clamp(30px, 10vw, 130px) 50px 10px
+    }
+
+    .user_info2 .redact {
+        float: right;
+        padding: 13px 23px;
+        background: #73F9CF;
+        border-radius: 10px;
+        border: 0;
+        margin-bottom: 30px;
+        margin-left: 20px
+    }
+
+.container-your-letter {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px 8px #54001e;
+    min-width: min(550px, 80%);
+    min-height: min(500px, 80%);
+    border-radius: 9px;
+    background-color: #333E4C
+}
+
+    .container-your-letter .Your-letter {
+        padding: 20px;
+        text-align: center;
+        border-radius: 9px
+    }
+
+    .container-your-letter .exit {
+        float: left;
+        background: #73F9CF;
+        border-radius: 10px;
+        padding: 6px 16px;
+        border: 0px
+    }
+
+.container-your-letter-show {
+    display: inline
+}
+
+@media screen and (max-width:1040px) {
+    .container2 {
+        max-width: min(820px, 80%)
+    }
+}

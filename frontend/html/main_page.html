@@ -26,29 +26,45 @@
     <main>
         <div class="container2">
             <div class="user_info1">
-                <img src="../img/фото профиля.png" alt="" width="165px">
+                <img src="../img/trace.svg" alt="svg" class="user-photo" width="165px">
                 <div>
                     <p>Иванов Иван Иванович</p>
                     <p>Должность</p>
                 </div>
                 <div>
-                    <p><a class="invite-letter" href="">Пригласительно письмо</a></p>
+                    <p><a class="invite-letter" onclick="javascript:myFunction()">Пригласительно письмо</a></p>
                     <a class="form" href="">Пожалуйста, пройдите анкитирование</a>
                 </div>
             </div>
             <div class="user_info2">
                 <p class="">Дата рождения</p>
-                <input type="text" class="DOB" placeholder="01.01.2000">
+                <span type="text" class="DOB">01.01.2000</span>
                 <p class="">Электронная почта</p>
-                <input type="email" class="mail" placeholder="example@mail.ru">
+                <span type="email" class="mail">example@mail.ru</span>
                 <p class="" >Номер телефона</p>
-                <input type="password" class="number" placeholder="+7(000)000-00-00">
-                <p class="">Расскажите о себе</p>
-                <textarea type="text" class="about_you" placeholder="Помогите."></textarea>
+                <span type="password" class="number">+7(000)000-00-00</span>
                 <br>
-                <button class="redact">Редактировать</button>
+            </div>
+        </div>
+        <div class="container-your-letter" id="container-letter">
+            <div class="Your-letter">
+                <button class="exit" style=" float: left;" onclick="javascript:exitFunction()"><p>Назад</p></button>
+                <br>
+                <p>Ваш текст</p>
             </div>
         </div>
     </main>
+    <script>
+
+        console.log(document.getElementsByClassName("container-your-letter").classList)
+        function myFunction() {
+            document.getElementById("container-letter").classList.toggle("container-your-letter-show");
+        }
+
+        function exitFunction() {
+            document.getElementById("container-letter").classList.remove("container-your-letter-show");
+        }
+
+    </script>
 </body>
 </html>

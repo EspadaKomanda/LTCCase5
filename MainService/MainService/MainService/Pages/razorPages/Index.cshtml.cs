@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Crypto.Generators;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace MainService.Pages.razorPages
@@ -23,25 +24,62 @@ namespace MainService.Pages.razorPages
         {
             var Auth = await _configCommunicator.GetAuth();
             var result = await _authDbCommunicator.GetUserByEmail(userModel.email);
-            if (result.Password == (userModel.password))
+            Console.WriteLine(ByteArrayToString(GetHash(userModel.password)));
+            if (result.Password== ByteArrayToString(GetHash(userModel.password)))
             {
-                var claims = new List<Claim> { new Claim(ClaimTypes.Name, userModel.email) };
-                // создаем JWT-токен
+                var claims = new List<Claim> { new Claim(ClaimTypes.Email, userModel.email)};
+                
                 var jwt = new JwtSecurityToken(
                     issuer: Auth.ISSUER,
                     audience: Auth.AUDIENCE,
                     claims: claims,
-                    expires: DateTime.UtcNow.Add(TimeSpan.FromMinutes(2)),
+                    expires: DateTime.UtcNow.Add(TimeSpan.FromDays(1)),
                     signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Auth.KEY)), SecurityAlgorithms.HmacSha256));
                 var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
                 Console.WriteLine("Created token!");
                 HttpContext.Session.SetString("Token", encodedJwt);
-                return Page();
+                return RedirectToPage("Profile");
             }
             else
             {
                 return BadRequest();
             }
+        }
+        private static byte[] GetHash(string password)
+        {
+            byte[] pwdHash;
+            pwdHash = ASCIIEncoding.ASCII.GetBytes(password);
+
+            byte[] pwdSource = new MD5CryptoServiceProvider().ComputeHash(pwdHash);
+            return pwdSource;
+        }
+
+        private static bool CompareHash(byte[] currentpassword, byte[] storedpassword)
+        {
+            bool bEqual = false;
+            if (currentpassword.Length == storedpassword.Length)
+            {
+                int i = 0;
+                while ((i < currentpassword.Length) && (currentpassword[i] == storedpassword[i]))
+                {
+                    i += 1;
+                }
+                if (i == currentpassword.Length)
+                {
+                    bEqual = true;
+                }
+            }
+            return bEqual;
+        }
+        private string ByteArrayToString(byte[] arrInput)
+        {
+            int i;
+            StringBuilder sOutput = new StringBuilder(arrInput.Length);
+            for (i = 0; i < arrInput.Length - 1; i++)
+            {
+                sOutput.Append(arrInput[i].ToString("X2"));
+            }
+            return sOutput.ToString();
         }
         public void OnGet()
         {

@@ -1,10 +1,4 @@
-@main-color: #222A35;
-@second-color: #333E4C;
-@third-color: #73F9CF;
-@fourth-color: #FE095F;
-@fifth-color: #2D2B61;
-@sixth-color: #55D4ED;
-@seventh-color: #6130AE;
+// main: "main_page.less"
 body {
     background: @main-color;
 }
@@ -13,9 +7,19 @@ body {
     display: flex;
     align-items: center;
     margin-top: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     font-size: 25px;
     font-weight: 600;
+
+    .user-photo:hover {
+    opacity: 0.8;
+    }
+
+    .user-photo:active {
+        opacity: 0.6;
+    }
+
+    
 
     div:first-of-type {
 
@@ -34,10 +38,12 @@ body {
             margin-bottom: 10px;
 
             .invite-letter {
+                background-color: @main-color;
+                text-decoration: none;
                 color: @third-color;
                 font-weight: 500;
-                text-align: end;
                 text-decoration: underline;
+                cursor: pointer;
             }
         }
 
@@ -45,6 +51,35 @@ body {
             color: @fourth-color;
             font-weight: 400;
             text-decoration: underline;
+            line-height: 30px;
+        }
+    }
+
+    @media screen and (max-width: 1020px){
+        div:last-of-type {
+
+            p {
+                text-align: left;
+            }
+
+            .invite-letter {
+                text-align: left;
+            }
+        }
+    }
+
+    @media screen and (max-width: 720px){
+        flex-wrap: wrap;
+
+        div:last-of-type {
+
+            p {
+                text-align: left;
+            }
+
+            .invite-letter {
+                text-align: left;
+            }
         }
     }
 }
@@ -53,8 +88,73 @@ body {
 
     font-size: 25px;
     color: #fff;
+    
+    p {
+        margin-bottom: 20px;
+        margin-top: 40px;
+    }
 
-    .DOB {
+    .DOB, .mail, .number {
+        margin-bottom: 20px;
+        background: @second-color;
+        padding: 10px 15px;
+        border: 0;
+        border-radius: 10px;
+    }
 
+    .about_you {
+        padding: 10px clamp(30px, 10vw, 130px) 50px 10px;
+    }
+
+    .redact {
+        float: right;
+        padding: 13px 23px ;
+        background: @third-color;
+        border-radius: 10px;
+        border: 0;
+        margin-bottom: 30px;
+        margin-left: 20px;
+    }
+
+}
+
+.container-your-letter {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 8px 8px darken(@fourth-color, 35%);
+    min-width: min(550px, 100% - 20px);
+    min-height: min(500px, 100% - 20px);
+    border-radius: 9px;
+    background-color: @second-color;
+    visibility:hidden;
+    .Your-letter {
+    padding: 20px;
+    text-align: center;
+    border-radius: 9px;
+    }
+
+    .exit {
+        float: left;
+        background: @third-color;
+        border-radius: 10px;
+        padding: 6px 16px;
+        border: 0px;
+    }
+}
+
+.container-your-letter-show {
+    display: inline;
+    visibility:visible;
+}
+
+
+
+
+@media screen and (max-width: 1040px){
+    .container2  {
+        max-width: min(820px, 100%-20px);
     }
 }

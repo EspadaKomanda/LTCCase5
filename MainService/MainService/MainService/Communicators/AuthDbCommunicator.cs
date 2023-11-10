@@ -1,6 +1,7 @@
 ﻿using Grpc.Core;
 using Grpc.Net.Client;
 using MainService.Configs;
+using MainService.Pages.Models;
 
 namespace MainService.Communicators
 {
@@ -21,6 +22,26 @@ namespace MainService.Communicators
             return await _authDbClient.GetUserByEmailAsync(new GetUserByEmailRequest()
             {
                 Email = email
+            });
+        }
+
+        public async Task<ModifyReply> Modify(UserModel result)
+        {
+            return await _authDbClient.ModifyUserByIdAsync(new ModifyUserByIdRequest()
+            {
+                Uuid = result.uuid.ToString(),
+                Email = result.email,
+                Phone = result.phone,
+                Telegram = result.telegram,
+                FirstName = result.firstName,
+                LastName = result.lastName,
+                Password = result.password,
+                Patronymic = result.patronymic,
+                Position = result.position,
+                Role = result.role,
+                About = result.about,
+                Avatar = result.avatar,
+                DateOfBirth = result.dateOfBirth
             });
         }
     }
