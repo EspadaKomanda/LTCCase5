@@ -19,9 +19,8 @@
         <ol class="question__list">
             <li class="question__item">
                 <h2>Вопрос</h2>
-
                 <form action="">
-                    <ul class="variant__list">
+                    <ul class="variant__list variant__list_checkbox">
                         <li class="variant__item">
                             <input type="checkbox" name="var1" id="checkbox-1">
                             <label for="checkbox-1" type="checkbox">Вариант</label>
@@ -35,7 +34,6 @@
                             <label for="checkbox-3" type="checkbox">Вариант</label>
                         </li>
                     </ul>
-                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
                 </form>
 
             </li>
@@ -43,7 +41,7 @@
                 <h2>Вопрос</h2>
                 
                 <form action="">
-                    <ul class="variant__list">
+                    <ul class="variant__list variant__list_radio">
                         <li class="variant__item">
                             <input type="radio" name="var2" id="radio-1">
                             <label for="radio-1" type="radio">Вариант</label>
@@ -57,7 +55,6 @@
                             <label for="radio-3" type="radio">Вариант</label>
                         </li>
                     </ul>
-                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
                     
                 </form>
 
@@ -73,11 +70,11 @@
                             <textarea name=""></textarea>
                         </li>
                     </ul>
-                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
                 </form>
 
             </li>
         </ol>
+        <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
     </main>
 </body>
 </html>

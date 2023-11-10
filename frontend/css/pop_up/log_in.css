@@ -31,7 +31,7 @@ body {
   font-weight: 600;
 }
 .modal_container .email {
-  min-width: min(300px, 85%);
+  min-width: min(300px, 45%);
   background-color: #222A35;
   outline: none;
   border: 0;
