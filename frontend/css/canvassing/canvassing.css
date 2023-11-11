@@ -51,7 +51,6 @@ body main .question__list .question__item .variant__list .question-type .dropdow
   margin-bottom: 20px;
 }
 body main .question__list .question__item .variant__list .question-type .dropdown-content {
-  background-color: #222A35;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
   border-radius: 10px;
@@ -67,7 +66,8 @@ body main .question__list .question__item .variant__list .question-type .dropdow
 body main .question__list .question__item .variant__list .question-type .dropdown-content a:hover {
   background-color: #222A35;
 }
-body main .question__list .question__item .variant__list .variant__item {
+body main .question__list .question__item .variant__list .variant__item,
+body main .question__list .question__item .variant__list .dropdown-content {
   font-size: 20px;
   margin-bottom: 10px;
   /* для элемента label связанного с .custom-radio */
@@ -76,12 +76,14 @@ body main .question__list .question__item .variant__list .variant__item {
   /* создание в label псевдоэлемента  before со следующими стилями */
   /* стили для радиокнопки, находящейся в состоянии checked */
 }
-body main .question__list .question__item .variant__list .variant__item input[type=radio] + label {
+body main .question__list .question__item .variant__list .variant__item input[type=radio] + label,
+body main .question__list .question__item .variant__list .dropdown-content input[type=radio] + label {
   display: inline-flex;
   align-items: center;
   user-select: none;
 }
-body main .question__list .question__item .variant__list .variant__item input[type=radio] + label::before {
+body main .question__list .question__item .variant__list .variant__item input[type=radio] + label::before,
+body main .question__list .question__item .variant__list .dropdown-content input[type=radio] + label::before {
   content: '';
   display: inline-block;
   width: 1.3em;
@@ -95,18 +97,21 @@ body main .question__list .question__item .variant__list .variant__item input[ty
   background-position: center center;
   background-size: 70% 70%;
 }
-body main .question__list .question__item .variant__list .variant__item input[type=radio]:checked + label::before {
+body main .question__list .question__item .variant__list .variant__item input[type=radio]:checked + label::before,
+body main .question__list .question__item .variant__list .dropdown-content input[type=radio]:checked + label::before {
   border: solid #222A35 7px;
   background-color: #73F9CF;
   width: 0.7em;
   height: 0.7em;
 }
-body main .question__list .question__item .variant__list .variant__item input[type=checkbox] + label {
+body main .question__list .question__item .variant__list .variant__item input[type=checkbox] + label,
+body main .question__list .question__item .variant__list .dropdown-content input[type=checkbox] + label {
   display: inline-flex;
   align-items: center;
   user-select: none;
 }
-body main .question__list .question__item .variant__list .variant__item input[type=checkbox] + label::before {
+body main .question__list .question__item .variant__list .variant__item input[type=checkbox] + label::before,
+body main .question__list .question__item .variant__list .dropdown-content input[type=checkbox] + label::before {
   content: '';
   display: inline-block;
   width: 1.3em;
@@ -120,10 +125,12 @@ body main .question__list .question__item .variant__list .variant__item input[ty
   background-position: center center;
   background-size: 70% 70%;
 }
-body main .question__list .question__item .variant__list .variant__item input[type=checkbox]:checked + label::before {
+body main .question__list .question__item .variant__list .variant__item input[type=checkbox]:checked + label::before,
+body main .question__list .question__item .variant__list .dropdown-content input[type=checkbox]:checked + label::before {
   background-image: url("../../img/галка.png");
 }
-body main .question__list .question__item .variant__list .variant__item textarea {
+body main .question__list .question__item .variant__list .variant__item textarea,
+body main .question__list .question__item .variant__list .dropdown-content textarea {
   background-color: #222A35;
   border: 0;
   border-radius: 10px;
@@ -131,7 +138,8 @@ body main .question__list .question__item .variant__list .variant__item textarea
   min-width: min(600px, 80%);
   height: 100px;
 }
-body main .question__list .question__item .variant__list .variant__item .variant-for-question {
+body main .question__list .question__item .variant__list .variant__item .variant-for-question,
+body main .question__list .question__item .variant__list .dropdown-content .variant-for-question {
   background-color: #222A35;
   border: 0;
   border-radius: 10px;
