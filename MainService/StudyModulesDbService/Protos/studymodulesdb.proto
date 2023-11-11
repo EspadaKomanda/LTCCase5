@@ -11,6 +11,7 @@ service StudyModulesDb{
 	rpc DeleteStudyModule(DeleteStudyModuleRequest) returns (DeleteStudyModuleReply);
 	rpc GetStudyModule(GetStudyModuleRequest) returns (GetStudyModuleReply);
 	rpc GetStudyModuleWhole(GetStudyModuleWholeRequest) returns (StudyModule);
+	rpc GetStudyModulesAll(GetStudyModulesAllRequest) returns (StudyModulesAll);
 
 	rpc CreateStudySubmodule(CreateStudySubmoduleRequest) returns (CreateStudySubmoduleReply);
 	rpc ModifyStudySubmodule(ModifyStudySubmoduleRequest) returns (ModifyStudySubmoduleReply);
@@ -65,12 +66,9 @@ message GetStudyModuleReply{
 	string uuid = 3;
 }
 message GetStudyModuleWholeRequest{
-	string name = 1;
-	string asignee = 2;
 	string uuid = 3;
-	repeated StudySubmodule submodules = 4;
-	repeated Test tests = 5;
-	repeated Deadline deadlines = 6;
+}
+message GetStudyModulesAllRequest{
 }
 
 //StudySubmodule
@@ -205,6 +203,10 @@ message GetDeadlineReply{
 }
 
 //Objects
+message StudyModulesAll{
+	repeated StudyModule studyModules = 1;
+}
+
 message StudyModule{
 	string name = 1;
 	string asignee = 2;

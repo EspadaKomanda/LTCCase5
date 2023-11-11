@@ -214,6 +214,28 @@ namespace StudyModulesDbService.Managers
             }
         }
 
+        public async Task<StudyModulesAll> GetStudyModulesAll(GetStudyModulesAllRequest request)
+        {
+            try
+            {
+                using (ApplicationContext ctx = new ApplicationContext())
+                {
+                    var modules = (from module in ctx.studyModules
+                                  select GetStudyModuleWhole(module).Result).ToList();
+
+                    var modulesMsg = new StudyModulesAll();
+                    modulesMsg.StudyModules.AddRange(modules);
+                    
+                    return await Task.FromResult(modulesMsg);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return await Task.FromResult(new StudyModulesAll());
+            }
+        }
+
         public async Task<string> CreateStudySubmodule(StudySubmoduleModel request)
         {
             string ValidationResult = Validate(request);

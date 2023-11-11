@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace StudyModulesDbService.Services
 {
-    public class StudyModulesDbService
+    public class StudyModulesDbService : StudyModulesDb.StudyModulesDbBase
     {
     }
 }

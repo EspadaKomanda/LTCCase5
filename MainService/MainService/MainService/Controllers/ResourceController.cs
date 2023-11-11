@@ -16,11 +16,18 @@ namespace MainService.Controllers
 
         }
 
+        [Route("employees.css")]
+        [HttpGet]
+        public async Task GetEmployes()
+        {
+            string page = System.IO.File.ReadAllText("MainService/Pages/css/employees/employees.css");
+            await HttpContext.Response.WriteAsync(page);
+        }
         [Route("training_modules.css")]
         [HttpGet]
         public async Task GetModules()
         {
-            string page = System.IO.File.ReadAllText("MainService/Pages/css/training_modules.css/training_modules.css");
+            string page = System.IO.File.ReadAllText("MainService/Pages/css/training_modules/training_modules.css");
             await HttpContext.Response.WriteAsync(page);
         }
         [Route("header.less")]
