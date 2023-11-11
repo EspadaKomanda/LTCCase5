@@ -7,6 +7,37 @@ namespace AuthDbService.Services
     public class AuthDbService : AuthDb.AuthDbBase
     {
         private AuthDbManager _manager = new AuthDbManager();
+        public override async Task<GetUsersReply> GetUsers(GetUsersRequest request, ServerCallContext context)
+        {
+            var reply = new GetUsersReply();
+            reply.Users.AddRange( await convertList(await _manager.GetUsers()));
+            return reply;
+        }
+        private async Task<List<GetReply>> convertList(List<UserModel> users)
+        {
+            List<GetReply> result = new List<GetReply>();
+            foreach (var VARIABLE in users)
+            {
+                var user = new GetReply()
+                {
+                   About = VARIABLE.about,
+                   Avatar = VARIABLE.avatar,
+                   DateOfBirth = VARIABLE.dateOfBirth,
+                   Email = VARIABLE.email,
+                   FirstName = VARIABLE.firstName,
+                   LastName = VARIABLE.lastName,
+                   Password = VARIABLE.password,
+                   Patronymic = VARIABLE.patronymic,
+                   Phone = VARIABLE.phone,
+                   Position = VARIABLE.position,
+                   Uuid = VARIABLE.uuid.ToString(),
+                   Role = VARIABLE.role,
+                   Telegram = VARIABLE.telegram
+                };
+                result.Add(user);
+            }
+            return result;
+        }
         public async override Task<CreateUserReply> CreateUser(CreateUserRequest request, ServerCallContext context)
         {
             var result = await _manager.AddUser(new UserModel()
@@ -22,6 +53,7 @@ namespace AuthDbService.Services
                 role = request.Role,
                 about = request.About,
                 avatar = request.Avatar,
+                dateOfBirth = request.DateOfBirth
             });
             return await Task.FromResult(new CreateUserReply()
             {
@@ -74,15 +106,18 @@ namespace AuthDbService.Services
                 Role = result.role,
                 About = result.about,
                 Avatar = result.avatar,
-                Uuid = result.uuid.ToString()
+                Uuid = result.uuid.ToString(),
+                DateOfBirth = result.dateOfBirth
             });
         }
 
         public async override Task<GetReply> GetUserById(GetUserByIdRequest request, ServerCallContext context)
         {
+            Guid accountId;
+            Guid.TryParse(request.Uuid, out accountId);
             var result = await _manager.GetUserById(new UserModel()
             {
-                email = request.Uuid
+                uuid = accountId
             });
             return await Task.FromResult(new GetReply()
             {
@@ -97,7 +132,8 @@ namespace AuthDbService.Services
                 Role = result.role,
                 About = result.about,
                 Avatar = result.avatar,
-                Uuid = result.uuid.ToString()
+                Uuid = result.uuid.ToString(),
+                DateOfBirth = result.dateOfBirth
             });
         }
 
@@ -116,6 +152,7 @@ namespace AuthDbService.Services
                 role = request.Role,
                 about = request.About,
                 avatar = request.Avatar,
+                dateOfBirth = request.DateOfBirth
             });
             return await Task.FromResult(new ModifyReply()
             {
@@ -127,7 +164,7 @@ namespace AuthDbService.Services
         {
             Guid accountId;
             Guid.TryParse(request.Uuid, out accountId);
-            var result = await _manager.ModifyUserByEmail(new UserModel()
+            var result = await _manager.ModifyUserById(new UserModel()
             {
                 email = request.Email,
                 phone = request.Phone,
@@ -140,7 +177,8 @@ namespace AuthDbService.Services
                 role = request.Role,
                 about = request.About,
                 avatar = request.Avatar,
-                uuid = accountId
+                uuid = accountId,
+                dateOfBirth = request.DateOfBirth
             });
             return await Task.FromResult(new ModifyReply()
             {

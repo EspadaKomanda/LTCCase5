@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LogService.Services";
+
+package log;
+
+service Log{
+	rpc CreateLog (CreateLogRequest) returns (CreateLogReply);
+	rpc GetLogs (GetLogsRequest) returns (GetLogsReply);
+}
+
+message CreateLogRequest{
+	string logLevel=1;
+	string message=2;
+}
+message CreateLogReply{
+}
+message Logs{
+	string timestamp =1;
+	string logLevel=2;
+	string message=3;
+}
+message GetLogsRequest{
+
+}
+message GetLogsReply{
+	repeated Logs logs=1;
+}

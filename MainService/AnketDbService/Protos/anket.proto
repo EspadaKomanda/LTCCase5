@@ -1,0 +1,26 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "AnketDbService.Services";
+
+package anket;
+
+service Anket {
+	rpc CreateAnket(CreateAnketRequest) returns (CreateAnketReply);
+	rpc GetAnket(GetAnketRequest) returns (GetAnketReply);
+}
+message CreateAnketRequest{
+	repeated AnketPart anket =1;
+}
+message AnketPart{
+	string text=1;
+	string type=2;
+	repeated string questionVariants=3;
+}
+message GetAnketRequest{
+}
+message GetAnketReply{
+	repeated AnketPart anket =1;
+}
+message CreateAnketReply{
+	string result=1;
+}

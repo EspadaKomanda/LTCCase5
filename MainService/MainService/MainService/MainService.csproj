@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Protos\authdb.proto" />
+    <None Remove="Protos\config.proto" />
+    <None Remove="Protos\logger.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.24" />
+    <PackageReference Include="MimeKit" Version="4.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\resources\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\authdb.proto" />
+    <Protobuf Include="Protos\config.proto" />
+    <Protobuf Include="Protos\logger.proto" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,263 @@
+﻿@page
+@using System.Diagnostics.Eventing.Reader
+@model MainService.Pages.razorPages.ProfileModel
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/styles.css">
+    <link rel="stylesheet" href="/resources/main_page.css">
+    <link rel="stylesheet" href="/resources/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Ваш профиль</title>
+</head>
+<body>
+
+<header class="header">
+    <div class="conteiner1">
+        <nav class="navigation">
+            <ul class="navigation__list">
+                <li class="navigation__item"><a href="">Ваш профиль</a></li>
+                <li class="navigation__item"><a href="">О компании</a></li>
+                <li class="navigation__item"><a href="">Учебные модули</a></li>
+                @if (Model.userModel.role == "HR")
+                {
+                    <li class="navigation__item"><a href="">Сотрудники</a></li>
+                    <li class="navigation__item"><a href="">Логи</a></li>
+                }
+            </ul>
+        </nav>
+    </div>
+</header>
+<main>
+    <style>
+        .header {
+    background-color: #333E4C
+}
+    
+    .header .navigation__list {
+        display: flex;
+        justify-content: start
+    }
+
+    .header .navigation__item {
+        padding: 20px 0
+    }
+
+        .header .navigation__item a {
+            color: #fff;
+            padding: 0 clamp(7px, 2vw, 70px);
+            font-size: clamp(10px, 3vw, 25px);
+            font-weight: 700
+        }
+
+    .header li:first-of-type {
+        background-color: #222A35;
+        border-radius: 0 10px 0 0
+    }
+
+body {
+    background: #222A35
+}
+
+.user_info1 {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-size: 25px;
+    font-weight: 600
+}
+
+    .user_info1 .user-photo:hover {
+        opacity: .8
+    }
+
+    .user_info1 .user-photo:active {
+        opacity: .6
+    }
+
+    .user_info1 div:first-of-type {
+        margin-right: 30px
+    }
+
+        .user_info1 div:first-of-type p {
+            color: #fff;
+            margin-bottom: 10px
+        }
+
+    .user_info1 div:last-of-type p {
+        text-align: end;
+        margin-bottom: 10px
+    }
+
+        .user_info1 div:last-of-type p .invite-letter {
+            background-color: #222A35;
+            text-decoration: none;
+            color: #73F9CF;
+            font-weight: 500;
+            text-decoration: underline;
+            cursor: pointer
+        }
+
+    .user_info1 div:last-of-type .form {
+        color: #FE095F;
+        font-weight: 400;
+        text-decoration: underline;
+        line-height: 30px
+    }
+
+
+
+.user_info2 {
+    font-size: 25px;
+    color: #fff
+}
+
+    .user_info2 p {
+        margin-bottom: 20px;
+        margin-top: 40px
+    }
+
+    .user_info2 .DOB, .user_info2 .mail, .user_info2 .number {
+        margin-bottom: 20px;
+        background: #333E4C;
+        padding: 10px 15px;
+        border: 0;
+        border-radius: 10px
+    }
+
+    .user_info2 .about_you {
+        padding: 10px clamp(30px, 10vw, 130px) 50px 10px
+    }
+
+    .user_info2 .redact {
+        float: right;
+        padding: 13px 23px;
+        background: #73F9CF;
+        border-radius: 10px;
+        border: 0;
+        margin-bottom: 30px;
+        margin-left: 20px
+    }
+
+.container-your-letter {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 8px 8px #54001e;
+    min-width: min(550px, 80%);
+    min-height: min(500px, 80%);
+    border-radius: 9px;
+    background-color: #333E4C
+}
+
+    .container-your-letter .Your-letter {
+        padding: 20px;
+        text-align: center;
+        border-radius: 9px
+    }
+
+    .container-your-letter .exit {
+        float: left;
+        background: #73F9CF;
+        border-radius: 10px;
+        padding: 6px 16px;
+        border: 0px
+    }
+
+.container-your-letter-show {
+    display: inline
+}
+
+
+    </style>
+    <div class="container2">
+        <div class="user_info1">
+            @{
+                if (Model.userModel.avatar != "")
+                {
+                    <img src="@Model.userModel.avatar" alt="" style="margin-right:10px; border-radius:50%" width="165px">
+                }
+                else
+                {
+                        <img src="/resources/trace.svg" alt="" style="margin-right:10px; border-radius:50%" width="165px">
+                }
+            }
+          
+        
+            <div>
+                <p>@Model.userModel.firstName @Model.userModel.lastName @Model.userModel.patronymic</p>
+                <p>@Model.userModel.position</p>
+            </div>
+            <div>
+                <p><a class="invite-letter" onclick="javascript:myFunction()">Пригласительно письмо</a></p>
+                <a class="form" href="/Anket">Пожалуйста, пройдите анкетирование</a>
+            </div>
+        </div>
+        <form enctype="multipart/form-data" id="fileUp" style="visibility:collapse" method="post">
+            <div class="form-group">
+                <label class="file">
+                        <input type="file" asp-for="Upload" style="background: #333E4C; padding: 5px 10px; border: 0; border-radius: 10px; color:#fff" name="Upload" aria-label="File browser example">
+                </label>
+                    <input class="exit" style="border: 0;background-color:#73F9CF ;border-radius: 10px;" type="submit" value="Upload">
+                @{
+                    if (Model.ErrorMessage!="")
+                    {
+                        <span class="mail">@Model.ErrorMessage</span>
+                    }
+                }
+            </div>
+
+        </form>
+        <div class="user_info2">
+            <p class="">Дата рождения</p>
+            <span class="DOB">@Model.userModel.dateOfBirth</span>
+            <p class="">Электронная почта</p>
+            <span class="mail">@Model.userModel.email</span>
+            <p class="">Номер телефона</p>
+                <p class="number" style="width:165">@Model.userModel.phone</p>
+           
+                <div>
+                    <button class="redact" onclick="redact()">Редактировать</button>
+                    @if (Model.userModel.role == "HR")
+                    {
+                        
+                        <button class="redact">Обучение</button>
+                    }
+                </div>
+            
+        </div>
+    </div>
+    <div class="container-your-letter" id="container-letter">
+        <div class="Your-letter" style="">
+            <button class="exit" style=" float: left;" onclick="javascript:exitFunction()">
+                <p>Назад</p></button>
+            <br>
+            <p>@Model.inviteLetter</p>
+        </div>
+    </div>
+    <script>
+        function redact() {
+                var inp1 = document.getElementById("fileUp")
+            inp1.style["visibility"] = "visible";
+            }
+    </script>
+    <script>
+
+        console.log(document.getElementsByClassName("container-your-letter").classList)
+        function myFunction() {
+            document.getElementById("container-letter").classList.toggle("container-your-letter-show");
+        }
+
+        function exitFunction() {
+            document.getElementById("container-letter").classList.remove("container-your-letter-show");
+        }
+
+    </script>
+
+</main>
+</body>

@@ -1,0 +1,86 @@
+﻿@page
+@model MainService.Pages.razorPages.AnketModel
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/styles.css">
+    <link rel="stylesheet" href="/resources/canvassing.css">
+    <link rel="stylesheet" href="/resources/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Анкитирование</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">Пожалуйста, пройдите анкетирование, чтобы Ваш работодатель лучше узнал Вас</h1>
+    </header>
+    <main>
+        <ol class="question__list">
+            <li class="question__item">
+                <h2>Вопрос</h2>
+
+                <form action="">
+                    <ul class="variant__list">
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-1">
+                            <label for="checkbox-1" type="checkbox">Вариант</label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-2">
+                            <label for="checkbox-2" type="checkbox">Вариант</label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-3">
+                            <label for="checkbox-3" type="checkbox">Вариант</label>
+                        </li>
+                    </ul>
+                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
+                </form>
+
+            </li>
+            <li class="question__item">
+                <h2>Вопрос</h2>
+
+                <form action="">
+                    <ul class="variant__list">
+                        <li class="variant__item">
+                            <input type="radio" name="var2" id="radio-1">
+                            <label for="radio-1" type="radio">Вариант</label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="radio" name="var2" id="radio-2">
+                            <label for="radio-2" type="radio">Вариант</label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="radio" name="var2" id="radio-3">
+                            <label for="radio-3" type="radio">Вариант</label>
+                        </li>
+                    </ul>
+                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
+
+                </form>
+
+            </li>
+            <li class="question__item">
+                <h2>Вопрос</h2>
+                <form action="">
+
+                    <ul class="variant__list">
+                        <li class="variant__item">
+                            <p>Введите ответ</p>
+                            <br>
+                            <textarea name=""></textarea>
+                        </li>
+                    </ul>
+                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
+                </form>
+
+            </li>
+        </ol>
+    </main>
+</body>
+</html>

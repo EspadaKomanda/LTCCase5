@@ -1,0 +1,35 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CompanyAboutDbService.Communicators";
+
+package config;
+
+service Config {
+  rpc GetDb (DbRequest) returns (DbReply);
+  rpc GetUrl (UrlRequest) returns (UrlReply);
+  rpc GetClientInfo (ClientRequest) returns (ClientReply);
+}
+message DbRequest
+{
+  string name = 1;
+}
+message UrlRequest{
+  string urlName = 1;
+}
+message ClientRequest{
+  
+}
+message DbReply
+{
+  string server = 1;
+  string user = 2;
+  string password = 3;
+  string databasename = 4;
+}
+message UrlReply{
+  string url=1;
+}
+message ClientReply{
+  string clientId=1;
+  string clientSecret=2;
+}

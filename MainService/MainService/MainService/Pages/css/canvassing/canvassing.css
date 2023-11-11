@@ -1,0 +1,140 @@
+.header {
+  background: #333E4C;
+  min-height: 145px;
+  box-shadow: 1px 0 20px 8px #6e0027;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.header .header__title {
+  font-size: 24px;
+  color: #fff;
+  margin: 0;
+  max-width: 748px;
+  text-align: center;
+}
+body {
+  background-color: #222A35;
+}
+body main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+body main .question__list {
+  color: #fff;
+  counter-reset: my-counter;
+}
+body main .question__list .question__item {
+  background-color: #333E4C;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  position: relative;
+  padding: 10px 15px 15px 15px;
+}
+body main .question__list .question__item h2 {
+  margin-bottom: 80px;
+}
+body main .question__list .question__item .variant__list {
+  margin-bottom: 40px;
+}
+body main .question__list .question__item .variant__list .variant__item {
+  font-size: 20px;
+  margin-bottom: 10px;
+  /* для элемента label связанного с .custom-radio */
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  /* стили для радиокнопки, находящейся в состоянии checked */
+}
+body main .question__list .question__item .variant__list .variant__item input[type=radio] + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+body main .question__list .question__item .variant__list .variant__item input[type=radio] + label::before {
+  content: '';
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  background-color: #222A35;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70% 70%;
+}
+body main .question__list .question__item .variant__list .variant__item input[type=radio]:checked + label::before {
+  border: solid #222A35 7px;
+  background-color: #73F9CF;
+  width: 0.7em;
+  height: 0.7em;
+}
+body main .question__list .question__item .variant__list .variant__item input[type=checkbox] + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+body main .question__list .question__item .variant__list .variant__item input[type=checkbox] + label::before {
+  content: '';
+  display: inline-block;
+  width: 1.3em;
+  height: 1.3em;
+  flex-shrink: 0;
+  flex-grow: 0;
+  border-radius: 15%;
+  margin-right: 0.5em;
+  background-color: #222A35;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70% 70%;
+}
+body main .question__list .question__item .variant__list .variant__item input[type=checkbox]:checked + label::before {
+  background-image: url("../../img/галка.png");
+}
+body main .question__list .question__item .variant__list .variant__item textarea {
+  background-color: #222A35;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
+  min-width: min(600px, 80%);
+  height: 100px;
+}
+body main .question__list .question__item .variant__buttons {
+  justify-content: end;
+  display: flex;
+}
+body main .question__list .question__item::before {
+  content: counter(my-counter);
+  /* Выводим число */
+  counter-increment: my-counter;
+  /* Увеличиваем значение счётчика */
+  background: #333E4C;
+  color: #73F9CF;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: -60px;
+  border-radius: 10px;
+  font-weight: 700px;
+  font-size: 25px;
+  box-shadow: 0px 0px 10px 3px #870130;
+}
+body main .variant__answer {
+  padding: 4px 14px;
+  font-weight: 700;
+  border-radius: 5px;
+  border: 0;
+  background-color: #73F9CF;
+  color: #000;
+  margin-bottom: 40px;
+  cursor: pointer;
+}

@@ -1,0 +1,99 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "MainService.Communicators";
+
+package authdb;
+
+
+service AuthDb{
+	rpc CreateUser (CreateUserRequest) returns (CreateUserReply);
+	rpc DeleteUserByEmail (DeleteUserByEmailRequest) returns (DeleteUserByEmailReply);
+	rpc ModifyUserByEmail (ModifyUserByEmailRequest) returns (ModifyReply);
+	rpc DeleteUserById (DeleteUserByIdRequest) returns (DeleteUserByIdReply);
+	rpc ModifyUserById (ModifyUserByIdRequest) returns (ModifyReply);
+	rpc GetUserByEmail (GetUserByEmailRequest) returns (GetReply);
+	rpc GetUserById (GetUserByIdRequest) returns (GetReply);
+}
+message CreateUserRequest{
+	string email = 1;
+	string phone = 2;
+	string telegram = 3;
+	string firstName = 4;
+	string lastName = 5;
+	string patronymic = 6;
+	string password = 7;
+	string position = 8;
+	string role = 9;
+	string about = 10;
+	string avatar = 11;
+	string dateOfBirth =12;
+}
+message CreateUserReply{
+	string result = 1;
+}
+message DeleteUserByEmailRequest{
+	string email=1;
+}
+message DeleteUserByEmailReply{
+	string result =1;
+}
+message ModifyUserByEmailRequest{
+	string email = 1;
+	string phone = 2;
+	string telegram = 3;
+	string firstName = 4;
+	string lastName = 5;
+	string patronymic = 6;
+	string password = 7;
+	string position = 8;
+	string role = 9;
+	string about = 10;
+	string avatar = 11;
+	string dateOfBirth =12;
+
+}
+message ModifyReply{
+	string reply=1;
+}
+message DeleteUserByIdRequest{
+	string uuid=1;
+}
+message DeleteUserByIdReply{
+	string reply=1;
+}
+message ModifyUserByIdRequest{
+	string email = 1;
+	string phone = 2;
+	string telegram = 3;
+	string firstName = 4;
+	string lastName = 5;
+	string patronymic = 6;
+	string password = 7;
+	string position = 8;
+	string role = 9;
+	string about = 10;
+	string avatar = 11;
+	string uuid = 12;
+	string dateOfBirth =13;
+}
+message GetUserByEmailRequest{
+	string email = 1;
+}
+message GetUserByIdRequest{
+	string uuid=1;
+}
+message GetReply{
+	string email = 1;
+	string phone = 2;
+	string telegram = 3;
+	string firstName = 4;
+	string lastName = 5;
+	string patronymic = 6;
+	string password = 7;
+	string position = 8;
+	string role = 9;
+	string about = 10;
+	string avatar = 11;
+	string uuid = 12;
+	string dateOfBirth =13;
+}

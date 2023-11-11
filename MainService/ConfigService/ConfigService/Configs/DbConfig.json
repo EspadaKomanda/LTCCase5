@@ -1,0 +1,9 @@
+﻿[
+  {
+    "ServiceName": "authdb",
+    "Server": "db",
+    "User": "megauseruser",
+    "Password": "ourbestpwd",
+    "DatabaseName": "currauthdb"
+  }
+]

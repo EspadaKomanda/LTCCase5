@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/main_page/main_page.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Ваш профиль</title>
+</head>
+<body>
+    <header class="header">
+        <div class="conteiner1">
+            <nav class="navigation">
+                <ul class="navigation__list">
+                    <li class="navigation__item"><a href="">Ваш профиль</a></li>
+                    <li class="navigation__item"><a href="">О компании</a></li>
+                    <li class="navigation__item"><a href="">Учебные модули</a></li>
+                    <li class="navigation__item"><a href="">Сотрудники</a></li>
+                    <li class="navigation__item"><a href="">Логи</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="container2">
+            <button class="exit-button">Назад</button>
+            <div class="user_info1">
+                <img src="../img/trace.svg" alt="svg" class="user-photo" width="165px">
+                <div>
+                    <p>Иванов Иван Иванович</p>
+                    <p>Должность</p>
+                </div>
+                <div>
+                    <p><a class="invite-letter" onclick="javascript:myFunction()">Пригласительно письмо</a></p>
+                    <a class="form" href="">Пожалуйста, пройдите анкитирование</a>
+                </div>
+            </div>
+            <div class="user_info2">
+                <p class="">Дата рождения</p>
+                <span type="text" class="DOB">01.01.2000</span>
+                <p class="">Электронная почта</p>
+                <span type="email" class="mail">example@mail.ru</span>
+                <p class="" >Номер телефона</p>
+                <span type="password" class="number">+7(000)000-00-00</span>
+                <div>
+                    <button class="redact">Редактировать</button>
+                    <button class="redact">Обучение</button>
+                    <button class="redact">Назначить анкитирование</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-your-letter" id="container-letter">
+            <div class="Your-letter">
+                <button class="exit" style=" float: left;" onclick="javascript:exitFunction()"><p>Назад</p></button>
+                <br>
+                <p>Ваш текст</p>
+            </div>
+        </div>
+    </main>
+    <script>
+
+        console.log(document.getElementsByClassName("container-your-letter").classList)
+        function myFunction() {
+            document.getElementById("container-letter").classList.toggle("container-your-letter-show");
+        }
+
+        function exitFunction() {
+            document.getElementById("container-letter").classList.remove("container-your-letter-show");
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CompanyAboutDbService.Services";
+
+package companyaboutdb;
+
+service CompanyAboutDb{
+	rpc CreateCompanyAbout(CreateCompanyAboutRequest) returns (CreateCompanyAboutReply);
+	rpc ModifyCompanyAboutById(ModifyCompanyAboutByIdRequest) returns (ModifyCompanyAboutByIdReply);
+	rpc DeleteCompanyAboutById(DeleteCompanyAboutByIdRequest) returns (DeleteCompanyAboutByIdReply);
+	rpc GetCompanyAboutById(GetCompanyAboutByIdRequest) returns (GetReply);
+}
+message CreateCompanyAboutRequest{
+	string title = 1;
+	string description = 2;
+	string executives = 3;
+}
+
+message CreateCompanyAboutReply{
+	string result = 1;
+}
+
+message ModifyCompanyAboutByIdRequest{
+	string title = 1;
+	string description = 2;
+	string executives = 3;
+	string uuid = 4;
+}
+
+message ModifyCompanyAboutByIdReply{
+	string reply = 1;
+}
+
+message DeleteCompanyAboutByIdRequest{
+	string uuid = 1;
+}
+
+message DeleteCompanyAboutByIdReply{
+	string reply = 1;
+}
+
+message GetCompanyAboutByIdRequest{
+	string uuid = 1;
+}
+
+message GetReply {
+	string title = 1;
+	string description = 2;
+	string executives = 3;
+	string uuid = 4;
+}

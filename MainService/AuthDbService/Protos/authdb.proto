@@ -12,6 +12,13 @@ service AuthDb{
 	rpc ModifyUserById (ModifyUserByIdRequest) returns (ModifyReply);
 	rpc GetUserByEmail (GetUserByEmailRequest) returns (GetReply);
 	rpc GetUserById (GetUserByIdRequest) returns (GetReply);
+	rpc GetUsers (GetUsersRequest) returns (GetUsersReply);
+}
+message GetUsersRequest{
+
+}
+message GetUsersReply{
+	repeated GetReply users=1;
 }
 message CreateUserRequest{
 	string email = 1;
@@ -25,6 +32,7 @@ message CreateUserRequest{
 	string role = 9;
 	string about = 10;
 	string avatar = 11;
+	string dateOfBirth =12;
 }
 message CreateUserReply{
 	string result = 1;
@@ -47,6 +55,8 @@ message ModifyUserByEmailRequest{
 	string role = 9;
 	string about = 10;
 	string avatar = 11;
+	string dateOfBirth =12;
+
 }
 message ModifyReply{
 	string reply=1;
@@ -70,6 +80,7 @@ message ModifyUserByIdRequest{
 	string about = 10;
 	string avatar = 11;
 	string uuid = 12;
+	string dateOfBirth =13;
 }
 message GetUserByEmailRequest{
 	string email = 1;
@@ -89,5 +100,6 @@ message GetReply{
 	string role = 9;
 	string about = 10;
 	string avatar = 11;
-	string uuid = 13;
+	string uuid = 12;
+	string dateOfBirth =13;
 }

@@ -2,15 +2,32 @@
 using AuthDbService.Database.Models;
 using Grpc.Core;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
 namespace AuthDbService.Managers
 {
     public class AuthDbManager
     {
+        public async Task<List<UserModel>> GetUsers()
+        {
+            try
+            {
+                using (ApplicationContext ctx = new ApplicationContext())
+                {
+                    return ctx.users.ToList();
+                }
+            }
+            catch(Exception ex) 
+            {
+
+                Console.WriteLine(ex);
+                return null;
+            }
+        }
         public async Task<string> AddUser(UserModel request)
         {
             string ValidationResult = Validate(request);
-            if (ValidationResult=="")
+            if (ValidationResult == "")
             {
                 try
                 {
@@ -20,7 +37,7 @@ namespace AuthDbService.Managers
                         var state = await ctx.users.AddAsync(new UserModel()
                         {
                             uuid = Guid.NewGuid(),
-                            email = request.email, 
+                            email = request.email,
                             phone = request.phone,
                             telegram = request.telegram,
                             firstName = request.firstName,
@@ -43,6 +60,7 @@ namespace AuthDbService.Managers
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex);
                     return ex.ToString();
                 }
             }
@@ -50,140 +68,202 @@ namespace AuthDbService.Managers
             {
                 return ValidationResult;
             }
-          
+
         }
 
         public async Task<string> DeleteUserByEmail(UserModel model)
         {
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                var user =  ctx.users.Where(p => p.email == model.email).ToList()[0];
-                if (user != null)
+                using (ApplicationContext ctx = new ApplicationContext())
                 {
-                    ctx.users.Remove(user);
-                    await ctx.SaveChangesAsync();
-                    return "";
-                }
+                    var user = ctx.users.Where(p => p.email == model.email).ToList()[0];
+                    if (user != null)
+                    {
+                        ctx.users.Remove(user);
+                        await ctx.SaveChangesAsync();
+                        return "";
+                    }
 
-                return String.Format("User ({0} does not exist", model.email);
+                    return String.Format("User ({0} does not exist", model.email);
+                }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return e.ToString();
+            }
+          
         }
 
         public async Task<string> ModifyUserByEmail(UserModel request)
         {
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                var user = ctx.users.Where(p => p.email == request.email).ToList()[0];
-                if (user != null)
+                using (ApplicationContext ctx = new ApplicationContext())
                 {
-                    user.email = request.email ?? user.email;
-                    user.phone = request.phone ?? user.phone;
-                    user.telegram = request.telegram ?? user.telegram;
-                    user.firstName = request.firstName ?? user.firstName;
-                    user.lastName = request.lastName ?? user.lastName;
-                    user.patronymic = request.patronymic ?? user.patronymic;
-                    user.password = request.password ?? user.password;
-                    user.position = request.position ?? user.position;
-                    user.role = request.role ?? user.role;
-                    user.about = request.about ?? user.about;
-                    user.avatar = request.avatar ?? user.avatar;
+                    var user = ctx.users.Where(p => p.email == request.email).ToList()[0];
+                    if (user != null)
+                    {
+                        user.email = request.email ?? user.email;
+                        user.phone = request.phone ?? user.phone;
+                        user.telegram = request.telegram ?? user.telegram;
+                        user.firstName = request.firstName ?? user.firstName;
+                        user.lastName = request.lastName ?? user.lastName;
+                        user.patronymic = request.patronymic ?? user.patronymic;
+                        user.password = request.password ?? user.password;
+                        user.position = request.position ?? user.position;
+                        user.role = request.role ?? user.role;
+                        user.about = request.about ?? user.about;
+                        user.avatar = request.avatar ?? user.avatar;
 
-                    await ctx.SaveChangesAsync();
-                    return "";
+                        await ctx.SaveChangesAsync();
+                        return "";
+                    }
+
+                    return $"User ({request.email} does not exist";
                 }
-
-                return $"User ({request.email} does not exist";
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return ex.ToString();
+            }
+          
         }
         public async Task<string> DeleteUserById(UserModel model)
         {
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                var user = await ctx.users.FindAsync(model.uuid);
-                if (user != null)
+                using (ApplicationContext ctx = new ApplicationContext())
                 {
-                    ctx.users.Remove(user);
-                    await ctx.SaveChangesAsync();
-                    return "";
-                }
+                    var user = await ctx.users.FindAsync(model.uuid);
+                    if (user != null)
+                    {
+                        ctx.users.Remove(user);
+                        await ctx.SaveChangesAsync();
+                        return "";
+                    }
 
-                return String.Format("User ({0} does not exist", model.email);
+                    return String.Format("User ({0} does not exist", model.email);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return ex.ToString();
             }
         }
 
         public async Task<string> ModifyUserById(UserModel request)
         {
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                var user = await ctx.users.FindAsync(request.uuid);
-                if (user != null)
+                using (ApplicationContext ctx = new ApplicationContext())
                 {
-                    user.email = request.email ?? user.email;
-                    user.phone = request.phone ?? user.phone;
-                    user.telegram = request.telegram ?? user.telegram;
-                    user.firstName = request.firstName ?? user.firstName;
-                    user.lastName = request.lastName ?? user.lastName;
-                    user.patronymic = request.patronymic ?? user.patronymic;
-                    user.password = request.password ?? user.password;
-                    user.position = request.position ?? user.position;
-                    user.role = request.role ?? user.role;
-                    user.about = request.about ?? user.about;
-                    user.avatar = request.avatar ?? user.avatar;
+                    var user = await ctx.users.FindAsync(request.uuid);
+                    if (user != null)
+                    {
+                        user.email = request.email ?? user.email;
+                        user.phone = request.phone ?? user.phone;
+                        user.telegram = request.telegram ?? user.telegram;
+                        user.firstName = request.firstName ?? user.firstName;
+                        user.lastName = request.lastName ?? user.lastName;
+                        user.patronymic = request.patronymic ?? user.patronymic;
+                        user.password = request.password ?? user.password;
+                        user.position = request.position ?? user.position;
+                        user.role = request.role ?? user.role;
+                        user.about = request.about ?? user.about;
+                        user.avatar = request.avatar ?? user.avatar;
 
-                    await ctx.SaveChangesAsync();
-                    return "";
+                        await ctx.SaveChangesAsync();
+                        return "";
+                    }
+
+                    return $"User ({request.email} does not exist";
                 }
-
-                return $"User ({request.email} does not exist";
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return ex.ToString();
+            }
+           
         }
         public async Task<UserModel> GetUserById(UserModel request)
         {
-            var user = new UserModel();
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                user = await ctx.users.FindAsync(request.uuid);
+                var user = new UserModel();
+                using (ApplicationContext ctx = new ApplicationContext())
+                {
+
+                    user = await ctx.users.FindAsync(request.uuid);
+                }
+
+
+                if (user.firstName == null)
+                {
+                    return await Task.FromResult(new UserModel());
+                }
+
+                return await Task.FromResult(user);
             }
-
-
-            if (user.firstName == null)
+            catch (Exception ex)
             {
-                return await Task.FromResult(new UserModel());
+                Console.WriteLine(ex);
+                return new UserModel();
             }
-
-            return await Task.FromResult(user);
-
         }
         public async Task<UserModel> GetUserByEmail(UserModel request)
         {
-            var user = new UserModel();
-            using (ApplicationContext ctx = new ApplicationContext())
+            try
             {
-                user = await ctx.users.FindAsync(request.uuid);
-            }
+                var user = new UserModel();
+                Console.WriteLine(request.email);
+                using (ApplicationContext ctx = new ApplicationContext())
+                {
+                    user = ctx.users.Where(p => p.email == request.email).ToList()[0];
+                }
 
-            if (user.firstName == null)
+                if (user.firstName == null)
+                {
+                    return await Task.FromResult(new UserModel());
+                }
+
+                return await Task.FromResult(user);
+
+            }
+            catch (Exception ex)
             {
-                return await Task.FromResult(new UserModel());
+                Console.WriteLine(ex);
+                return new UserModel();
             }
-
-            return await Task.FromResult(user);
 
         }
         private string Validate(UserModel user)
         {
-            var results = new List<ValidationResult>();
-            var context = new ValidationContext(user);
-            string errors = "";
-            if (!Validator.TryValidateObject(user, context, results, true))
+            try
             {
-                foreach (var error in results)
+                var results = new List<ValidationResult>();
+                var context = new ValidationContext(user);
+                string errors = "";
+                if (!Validator.TryValidateObject(user, context, results, true))
                 {
-                    errors+=error.ErrorMessage+'\n';
+                    foreach (var error in results)
+                    {
+                        errors += error.ErrorMessage + '\n';
+                    }
                 }
-            }
 
-            return errors;
+                return errors;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return ex.ToString();
+            }
+          
         }
 
     }
