@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="Protos\authdb.proto" />
     <None Remove="Protos\config.proto" />
+    <None Remove="Protos\logger.proto" />
   </ItemGroup>
 
   <ItemGroup>
@@ -30,6 +31,7 @@
   <ItemGroup>
     <Protobuf Include="Protos\authdb.proto" />
     <Protobuf Include="Protos\config.proto" />
+    <Protobuf Include="Protos\logger.proto" />
   </ItemGroup>
 
 </Project>

@@ -15,7 +15,7 @@ namespace AuthDbService.Services
         }
         private async Task<List<GetReply>> convertList(List<UserModel> users)
         {
-            List<UserModel> result = new List<UserModel>();
+            List<GetReply> result = new List<GetReply>();
             foreach (var VARIABLE in users)
             {
                 var user = new GetReply()
@@ -34,8 +34,7 @@ namespace AuthDbService.Services
                    Role = VARIABLE.role,
                    Telegram = VARIABLE.telegram
                 };
-                anket.QuestionVariants.AddRange(VARIABLE.answerVariants.Split("-_-"));
-                result.Add(anket);
+                result.Add(user);
             }
             return result;
         }
