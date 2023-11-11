@@ -3,6 +3,8 @@ using System.Net.NetworkInformation;
 using System.Security.Claims;
 using MainService.Communicators;
 using MimeKit;
+using MainService.Controllers.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MainService.Controllers
 {
@@ -37,12 +39,62 @@ namespace MainService.Controllers
             string page = System.IO.File.ReadAllText("MainService/Pages/css/main_page/header.less");
             await HttpContext.Response.WriteAsync(page);
         }
+        [Route("icon.svg")]
+        [HttpGet]
+        public async Task<IActionResult> GetIcon()
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes("MainService/Pages/img/icon.svg");
+            string contentType = MimeTypes.GetMimeType(Path.GetExtension("MainService/Pages/img/icon.svg"));
+
+            return new FileContentResult(fileData, contentType)
+            {
+                FileDownloadName = "icon.svg"
+            };
+        }
+        [Authorize]
+        [Route("photoUri")]
+        [HttpGet]
+        public async Task<IActionResult> getCurrentPhoto([FromQuery] ResoureGettingModel model)
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes(model.avatar_Url);
+            string contentType = MimeTypes.GetMimeType(Path.GetExtension(model.avatar_Url));
+
+            return new FileContentResult(fileData, contentType)
+            {
+                FileDownloadName = Path.GetFileName(model.avatar_Url)
+            };
+        }
+
         [Route("canvassing.css")]
         [HttpGet]
         public async Task GetCanvassing()
         {
             string page = System.IO.File.ReadAllText("MainService/Pages/css/canvassing/canvassing.css");
             await HttpContext.Response.WriteAsync(page);
+        }
+        [Route("ph.png")]
+        [HttpGet]
+        public async Task<IActionResult> GetPh()
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes("MainService/Pages/img/ph.png");
+            string contentType = MimeTypes.GetMimeType(Path.GetExtension("MainService/Pages/img/ph.png"));
+
+            return new FileContentResult(fileData, contentType)
+            {
+                FileDownloadName = "ph.png"
+            };
+        }
+        [Route("loop.png")]
+        [HttpGet]
+        public async Task<IActionResult> GetLoop()
+        {
+            byte[] fileData = System.IO.File.ReadAllBytes("MainService/Pages/img/loop.png");
+            string contentType = MimeTypes.GetMimeType(Path.GetExtension("MainService/Pages/img/loop.png"));
+
+            return new FileContentResult(fileData, contentType)
+            {
+                FileDownloadName = "loop.png"
+            };
         }
         [Route("tick.png")]
         [HttpGet]
@@ -97,7 +149,7 @@ namespace MainService.Controllers
             string page = System.IO.File.ReadAllText("MainService/Pages/css/normalize.css");
             await HttpContext.Response.WriteAsync(page);
         }
-
+        [Authorize]
         [Route("getResource")]
         [HttpGet]
         public async Task<IActionResult> GetREs()

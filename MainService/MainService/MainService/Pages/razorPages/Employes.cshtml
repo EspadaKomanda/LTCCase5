@@ -3,79 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/training_modules/training_modules.css">
-    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="resources/styles.css">
+    <link rel="stylesheet" href="/resources/employees.css">
+    <link rel="stylesheet" href="/resources/normalize.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Учебные модули</title>
+    <title>Ваш профиль</title>
 </head>
 <body>
     <header class="header">
         <div class="conteiner1">
             <nav class="navigation">
                 <ul class="navigation__list">
-                    <li class="navigation__item"><a href="">Ваш профиль</a></li>
+                    <li class="navigation__item"><a href="/Profile">Ваш профиль</a></li>
                     <li class="navigation__item"><a href="">О компании</a></li>
                     <li class="navigation__item"><a href="">Учебные модули</a></li>
+                    <li class="navigation__item"><a href="/Employes">Сотрудники</a></li>
+                    <li class="navigation__item"><a href="">Логи</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <main>
-        <aside id="aside-bar">
-            <ul class="asside__list">
-                <li class="asside__item black-item">Курс 1 <span class="green-text">100%</span></li>
-                <li class="asside__item">Тест 1 <span class="red-text">01.11.23</span></li>
-                <li class="asside__item">Курс 2 <span class="red-text">54%</span></li>
-                <ul class="asside__sublist">
-                    <li class="asside__subitem black-item">Подкурс 2.1</li>
-                    <li class="asside__subitem">Тест 2.1 <span class="green-text">29.11.23</span></li>
-                    <li class="asside__subitem">Подкурс 2.2</li>
-                </ul>
-                <li class="asside__item">Тест 2 <span class="green-text">10.12.23</span></li>
-                <li class="asside__item">Курс 3 <span class="red-text">3%</span></li>
-                <ul class="asside__sublist">
-                    <li class="asside__subitem">Подкурс 3.1</li>
-                    <li class="asside__subitem">Подкурс 3.2</li>
-                    <li class="asside__subitem">Подкурс 3.3</li>
-                </ul>
-                <li class="asside__item">Тест 3 <span class="green-text">10.01.24</span></li>
-            </ul>
-        </aside>
-        <article>
-            <section class="course">
-                <h2 class="course__title">Курс 2</h2>
-                <button class="course-button" onclick="javascript:myFunction()">Курсы</button>
-                <div class="subcourse">
-                    <h3 class="subcourse__title">Подкурс 2.1</h3>
-                    <div class="subcourse__text">
-                        <p>Текст</p>
-                    </div>
-                    <h3 class="subcourse__title">Тест 2.1</h3>
-                    <p>Пожалуйста выполните следующий тест до <span class="green-text">29.11.23</span></p>
-                    <a href=""><span class="green-text">Ссылка На Рессурс</span></a>
+        <div class="search">
+            <input type="text" class="search-field" placeholder="Поиск">
+            <button style="background-color: #333E4C; border: 0; cursor: pointer;"><img src="/resources/loop.png" alt="" class="search-icon"></button>
+        </div>
+        <section class="employees">
+            @foreach (var user in Model.users)
+            {
+                <div class="employees__item">
+                    <img src="/resources/photoUri?avatar_Url=@user.avatar" onclick="window.location='/users/selectUser?userId=@user.uuid'" width="165px" height="165px">
+                    <p class="employees__full-name">@user.lastName @user.firstName @user.patronymic</p>
+                    <p class="employees__pos">@user.position</p>
                 </div>
-                <div class="subcourse">
-                    <h3 class="subcourse__title">Подкурс 2.2</h3>
-                    <div class="subcourse__text">
-                        <p>Текст</p>
-                    </div>
-                </div>
-            </section>
-        </article>
+            }
+            s
+            <div class="employees__item">
+                <img src="/resources/icon.svg" alt="" width="110px">
+            </div>
+        </section>
     </main>
-    <script>
-
-        console.log(document.getElementById("aside-bar").classList)
-        function myFunction() {
-            document.getElementById("aside-bar").classList.toggle("aside-hidden");
-        }
-
-        function exitFunction() {
-            document.getElementById("container-letter").classList.remove("container-your-letter-show");
-        }
-
-    </script>
 </body>

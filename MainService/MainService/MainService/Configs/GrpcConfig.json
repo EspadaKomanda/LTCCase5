@@ -8,5 +8,12 @@
     "Name": "AuthDbService",
     "Host": "authdb",
     "Port": 5211
+  },
+  {
+
+    "Name": "LogService",
+    "Host": "logs",
+    "Port": 5237
+
   }
 ]

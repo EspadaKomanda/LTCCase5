@@ -18,12 +18,12 @@
     <div class="conteiner1">
         <nav class="navigation">
             <ul class="navigation__list">
-                <li class="navigation__item"><a href="">Ваш профиль</a></li>
+                <li class="navigation__item"><a href="/Profile">Ваш профиль</a></li>
                 <li class="navigation__item"><a href="">О компании</a></li>
                 <li class="navigation__item"><a href="">Учебные модули</a></li>
                 @if (Model.userModel.role == "HR")
                 {
-                    <li class="navigation__item"><a href="">Сотрудники</a></li>
+                    <li class="navigation__item"><a href="/Employes">Сотрудники</a></li>
                     <li class="navigation__item"><a href="">Логи</a></li>
                 }
             </ul>

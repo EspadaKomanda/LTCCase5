@@ -17,6 +17,10 @@ namespace MainService.Communicators
             _authDbClient = new AuthDb.AuthDbClient(channel);
         }
 
+        public async Task<GetUsersReply> getUsers()
+        {
+            return await _authDbClient.GetUsersAsync(new GetUsersRequest());
+        }
         public async Task<GetReply> GetUserByEmail(string email)
         {
             return await _authDbClient.GetUserByEmailAsync(new GetUserByEmailRequest()
