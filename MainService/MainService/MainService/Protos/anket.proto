@@ -1,6 +1,6 @@
 ﻿syntax = "proto3";
 
-option csharp_namespace = "AnketDbService.Services";
+option csharp_namespace = "MainService.Communicators";
 
 package anket;
 

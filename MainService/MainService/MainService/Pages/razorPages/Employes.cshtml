@@ -1,48 +1,246 @@
 ﻿@page
 @model MainService.Pages.razorPages.EmployesModel
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="resources/styles.css">
-    <link rel="stylesheet" href="/resources/employees.css">
-    <link rel="stylesheet" href="/resources/normalize.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Ваш профиль</title>
-</head>
-<body>
-    <header class="header">
-        <div class="conteiner1">
-            <nav class="navigation">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><a href="/Profile">Ваш профиль</a></li>
-                    <li class="navigation__item"><a href="">О компании</a></li>
-                    <li class="navigation__item"><a href="">Учебные модули</a></li>
-                    <li class="navigation__item"><a href="/Employes">Сотрудники</a></li>
-                    <li class="navigation__item"><a href="">Логи</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <div class="search">
-            <input type="text" class="search-field" placeholder="Поиск">
-            <button style="background-color: #333E4C; border: 0; cursor: pointer;"><img src="/resources/loop.png" alt="" class="search-icon"></button>
-        </div>
-        <section class="employees">
-            @foreach (var user in Model.users)
-            {
-                <div class="employees__item">
-                    <img src="/resources/photoUri?avatar_Url=@user.avatar" onclick="window.location='/users/selectUser?userId=@user.uuid'" width="165px" height="165px">
-                    <p class="employees__full-name">@user.lastName @user.firstName @user.patronymic</p>
-                    <p class="employees__pos">@user.position</p>
-                </div>
-            }
-            s
-            <div class="employees__item">
-                <img src="/resources/icon.svg" alt="" width="110px">
+@if (Model.userModel.role == "HR" || Model.userModel.role.Contains("Руководитель"))
+{
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/resources/styles.css">
+        <link rel="stylesheet" href="/resources/employees.css">
+        <link rel="stylesheet" href="/resources/normalize.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+        <title>Ваш профиль</title>
+    </head>
+    <body>
+        <header class="header">
+            <div class="conteiner1">
+                <nav class="navigation">
+                    <ul class="navigation__list">
+                        <li class="navigation__item"><a href="/Profile">Ваш профиль</a></li>
+                        <li class="navigation__item"><a href="">О компании</a></li>
+                        <li class="navigation__item"><a href="">Учебные модули</a></li>
+                        <li class="navigation__item"><a href="/Employes">Сотрудники</a></li>
+                        <li class="navigation__item"><a href="">Логи</a></li>
+                    </ul>
+                </nav>
             </div>
-        </section>
-    </main>
-</body>
+        </header>
+        <main>
+            <style>
+                .header {
+                    background-color: #333E4C;
+                    margin-bottom: 40px;
+                }
+
+                    .header .navigation__list {
+                        display: flex;
+                        justify-content: start;
+                    }
+
+                    .header .navigation__item {
+                        padding: 20px 0;
+                    }
+
+                        .header .navigation__item a {
+                            color: #fff;
+                            padding: 0 clamp(6px, 2vw, 70px);
+                            font-size: clamp(6px, 2vw, 25px);
+                            font-weight: 700;
+                        }
+
+                    .header li:nth-of-type(4) {
+                        background-color: #222A35;
+                        border-radius: 0 10px 0 0;
+                    }
+
+                body {
+                    background-color: #222A35;
+                }
+
+                main {
+                    width: 100%;
+                    max-width: 1300px;
+                    text-align: center;
+                    margin: 0 auto;
+                }
+
+                    main .search {
+                        display: inline-flex;
+                        border-radius: 10px;
+                        padding: 10px 20px 10px 10px;
+                        background-color: #333E4C;
+                        min-width: min(500px, 75%);
+                        justify-content: space-between;
+                    }
+
+                        main .search .search-icon {
+                            width: 35px;
+                            height: 35px;
+                            margin-left: 5px;
+                            order: 1;
+                        }
+
+                        main .search .search-field {
+                            background-color: #333E4C;
+                            min-width: min(400px, 75%);
+                            border: 0;
+                            padding: 5px;
+                        }
+
+                            main .search .search-field:focus {
+                                outline: none;
+                            }
+
+                    main .employees {
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+                    }
+
+                        main .employees .employees__item {
+                            margin: 20px;
+                            color: #fff;
+                            font-size: 24px;
+                        }
+
+                            main .employees .employees__item .employees__full-name {
+                                margin: 10px 0;
+                                font-weight: 700;
+                            }
+
+                .container-employees {
+                    position: absolute;
+                    display: none;
+                    min-width: min(520px, 80%);
+                    background-color: #333E4C;
+                    font-size: 20px;
+                    font-weight: 700;
+                    text-align: center;
+                    padding: 20px;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    box-shadow: 0px 0px 8px 8px #54001e;
+                    min-width: min(500px, 80%);
+                    border-radius: 9px;
+                    /* The container <div> - needed to position the dropdown content */
+                    /* Dropdown Content (Hidden by Default) */
+                    /* Links inside the dropdown */
+                    /* Change color of dropdown links on hover */
+                    /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+                }
+
+                    .container-employees .dropdown {
+                        position: relative;
+                        display: inline-block;
+                        min-width: min(320px, 80%);
+                        margin-bottom: 20px;
+                    }
+
+                    .container-employees .dropdown-content {
+                        background-color: #333E4C;
+                        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+                        z-index: 10;
+                    }
+
+                        .container-employees .dropdown-content a {
+                            color: black;
+                            padding: 12px 16px;
+                            text-decoration: none;
+                            display: block;
+                        }
+
+                            .container-employees .dropdown-content a:hover {
+                                background-color: #222A35;
+                            }
+
+                            .container-employees .dropdown-content a:hover {
+                                background-color: #ddd;
+                            }
+
+                    .container-employees h2 {
+                        color: #fff;
+                        margin-bottom: 60px;
+                    }
+
+                    .container-employees button {
+                        background-color: #73F9CF;
+                        border: 0;
+                        padding: 5px 15px;
+                        text-align: center;
+                    }
+
+                    .container-employees input {
+                        background-color: #222A35;
+                        padding: 5px 10px;
+                        border: 0;
+                        border-radius: 10px;
+                        min-width: min(320px, 80%);
+                        margin-bottom: 20px;
+                    }
+
+                        .container-employees input:first-of-type {
+                            margin: 0;
+                        }
+
+                .container-employees-show {
+                    display: block;
+                }
+
+            </style>
+            <div class="search">
+                <input type="text" class="search-field" placeholder="Поиск">
+                <button style="background-color: #333E4C; border: 0; cursor: pointer;"><img src="/resources/loop.png" alt="" class="search-icon"></button>
+            </div>
+            <section class="employees">
+                @foreach (var user in Model.users)
+                {
+                    <div class="employees__item">
+                        <img src="/resources/photoUri?avatar_Url=@user.avatar" onclick="window.location='/users/selectUser?userId=@user.uuid'" width="165px" height="165px">
+                        <p class="employees__full-name">@user.lastName @user.firstName @user.patronymic</p>
+                        <p class="employees__pos">@user.position</p>
+                    </div>
+                }
+                <div class="employees__item">
+                    <button class="button-for-popup" style="border-radius: 50%; border: 0; background-color: #222A35;"><img src="/resources/icon.svg" alt="" width="165px" onclick="javascript:myFunction()"></button>
+                </div>
+                <div class="container-employees" id="cont-empl">
+                    <div class="Your-letter">
+                        <br>
+                        <h2>Добавить сотрудника</h2>
+                        <br>
+                        <form method="post">
+                            <br>
+                            <input type="text" name="position" placeholder="Должность">
+                            <br>
+                            <input type="text" name="name" placeholder="ФИО">
+                            <br>
+                            <input name="phone" placeholder="Телефон" required>
+                            <br>
+                            <input type="tel" id="email" name="email" placeholder="Почта" required />
+                            <br>
+                            <input type="text" name="password" placeholder="Пароль" required />
+                            <button type="submit">Ок</button>
+                            <br>
+                            <button class="exit" style=" float: left;" onclick="javascript:exitFunction()">
+                                <p>Назад</p>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <script>
+            console.log(document.getElementsByClassName("container-employees").classList)
+
+            function myFunction() {
+                document.getElementById("cont-empl").classList.toggle("container-employees-show");
+            }
+
+            function exitFunction() {
+                document.getElementById("cont-empl").classList.remove("container-employees-show");
+            }
+        </script>
+    </body>
+}

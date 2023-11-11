@@ -40,6 +40,9 @@ namespace AuthDbService.Services
         }
         public async override Task<CreateUserReply> CreateUser(CreateUserRequest request, ServerCallContext context)
         {
+            Console.WriteLine("Creating user!");
+
+            Console.WriteLine(request.DateOfBirth);
             var result = await _manager.AddUser(new UserModel()
             {
                 email = request.Email,
@@ -55,6 +58,7 @@ namespace AuthDbService.Services
                 avatar = request.Avatar,
                 dateOfBirth = request.DateOfBirth
             });
+            Console.WriteLine(request.DateOfBirth);
             return await Task.FromResult(new CreateUserReply()
             {
                 Result = result

@@ -27,14 +27,16 @@ namespace AuthDbService.Managers
         public async Task<string> AddUser(UserModel request)
         {
             string ValidationResult = Validate(request);
-            if (ValidationResult == "")
-            {
+            
                 try
                 {
+
+                    Console.WriteLine(request.dateOfBirth);
+                    Console.WriteLine("Creating User!!!!");
                     using (ApplicationContext ctx = new ApplicationContext())
                     {
 
-                        var state = await ctx.users.AddAsync(new UserModel()
+                       await ctx.users.AddAsync(new UserModel()
                         {
                             uuid = Guid.NewGuid(),
                             email = request.email,
@@ -47,15 +49,14 @@ namespace AuthDbService.Managers
                             position = request.position,
                             role = request.role,
                             about = request.about,
-                            avatar = request.avatar
+                            avatar = request.avatar,
+                            dateOfBirth = request.dateOfBirth
                         });
+
                         await ctx.SaveChangesAsync();
-                        if (state.State == Microsoft.EntityFrameworkCore.EntityState.Added)
-                        {
-                            return "Added user successfully";
-                        }
-                        //Cringe but we wanted a string here
-                        return "EntityState.Added is false";
+                    Console.WriteLine("Created User!!!!");
+                    return "Added user successfully";
+                     
                     }
                 }
                 catch (Exception ex)
@@ -63,11 +64,7 @@ namespace AuthDbService.Managers
                     Console.WriteLine(ex);
                     return ex.ToString();
                 }
-            }
-            else
-            {
-                return ValidationResult;
-            }
+          
 
         }
 

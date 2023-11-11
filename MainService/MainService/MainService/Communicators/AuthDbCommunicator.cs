@@ -1,6 +1,7 @@
 ﻿using Grpc.Core;
 using Grpc.Net.Client;
 using MainService.Configs;
+using MainService.Pages;
 using MainService.Pages.Models;
 
 namespace MainService.Communicators
@@ -21,6 +22,27 @@ namespace MainService.Communicators
         {
             return await _authDbClient.GetUsersAsync(new GetUsersRequest());
         }
+
+        public async Task<CreateUserReply> CreateUser(CreationUserModel model)
+        {
+            string[] name = model.name.Split(" ");
+            return await _authDbClient.CreateUserAsync(new CreateUserRequest()
+            {
+                Password = model.password,
+                Patronymic = name[name.Length - 1],
+                Role = "Employee",
+                Email = model.email,
+                About = " ",
+                Avatar = " ",
+                DateOfBirth = " ",
+                FirstName = name[1],
+                LastName = name[0],
+                Phone = model.phone,
+                Position = model.position,
+                Telegram = " ",
+                
+            });
+        }
         public async Task<GetReply> GetUserByEmail(string email)
         {
             return await _authDbClient.GetUserByEmailAsync(new GetUserByEmailRequest()
@@ -29,6 +51,13 @@ namespace MainService.Communicators
             });
         }
 
+        public async Task<GetReply> GetUserByUuId(string uuId)
+        {
+            return await _authDbClient.GetUserByIdAsync(new GetUserByIdRequest()
+            {
+                Uuid = uuId
+            });
+        }
         public async Task<ModifyReply> Modify(UserModel result)
         {
             return await _authDbClient.ModifyUserByIdAsync(new ModifyUserByIdRequest()

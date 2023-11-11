@@ -26,6 +26,7 @@ namespace AnketDbService.Services
             {
                 var anket = new AnketPart()
                 {
+                    ParentId = VARIABLE.parentID.ToString(),
                     Text = VARIABLE.text,
                     Type = VARIABLE.type
                 };

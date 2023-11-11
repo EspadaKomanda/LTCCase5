@@ -7,8 +7,10 @@ namespace MainService.Pages.razorPages
     [Authorize]
     public class AnketModel : PageModel
     {
+
         public void OnGet()
         {
+
         }
     }
 }

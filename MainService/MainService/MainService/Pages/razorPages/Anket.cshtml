@@ -1,8 +1,6 @@
 ﻿@page
 @model MainService.Pages.razorPages.AnketModel
 
-<!DOCTYPE html>
-<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,9 +18,9 @@
     </header>
     <main>
         <ol class="question__list">
-            <li class="question__item">
-                <h2>Вопрос</h2>
 
+            <li class="question__item question__item_selective">
+                <h2>Вопрос</h2>
                 <form action="">
                     <ul class="variant__list">
                         <li class="variant__item">
@@ -38,13 +36,10 @@
                             <label for="checkbox-3" type="checkbox">Вариант</label>
                         </li>
                     </ul>
-                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
                 </form>
-
             </li>
-            <li class="question__item">
+            <li class="question__item question__item_selective">
                 <h2>Вопрос</h2>
-
                 <form action="">
                     <ul class="variant__list">
                         <li class="variant__item">
@@ -60,15 +55,13 @@
                             <label for="radio-3" type="radio">Вариант</label>
                         </li>
                     </ul>
-                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
 
                 </form>
 
             </li>
-            <li class="question__item">
+            <li class="question__item question__item_textarea">
                 <h2>Вопрос</h2>
                 <form action="">
-
                     <ul class="variant__list">
                         <li class="variant__item">
                             <p>Введите ответ</p>
@@ -76,11 +69,46 @@
                             <textarea name=""></textarea>
                         </li>
                     </ul>
-                    <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
                 </form>
-
             </li>
         </ol>
+        <div class="variant__buttons"><button class="variant__answer" onclick="javascript:myFunction()">Ответить</button></div>
     </main>
+    <script>
+
+        function myFunction() {
+            let TestData = [];
+
+            const questionList = document.querySelector(".question__list");
+            const questionItems = questionList.querySelectorAll(".question__item");
+
+            for (let i = 0; i < questionItems.length; i += 1) {
+                const question = questionItems[i];
+                const answers = question.querySelectorAll("input, textarea");
+
+                let answer_sequence = [];
+
+                for (let j = 0; j < answers.length; j += 1) {
+                    const answer = answers[j];
+                    if (answer.tagName == "INPUT") {
+                        if (answer.checked) {
+                            answer_sequence.push((j + 1).toString());
+                        }
+                    }
+                    else if (answer.tagName == "TEXTAREA") {
+                        if (answer.value != "") {
+                            answer_sequence.push(answer.value);
+                        }
+                    }
+                }
+
+                const obj = {
+                    "questionId": (i + 1).toString(),
+                    "answer": answer_sequence
+                }
+                TestData.push(obj);
+            }
+            console.log(TestData);
+        }
+    </script>
 </body>
-</html>
