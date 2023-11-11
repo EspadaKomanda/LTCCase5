@@ -17,10 +17,10 @@
     </header>
     <main>
         <ol class="question__list">
-            <li class="question__item">
+            <li class="question__item question__item_selective">
                 <h2>Вопрос</h2>
                 <form action="">
-                    <ul class="variant__list variant__list_checkbox">
+                    <ul class="variant__list">
                         <li class="variant__item">
                             <input type="checkbox" name="var1" id="checkbox-1">
                             <label for="checkbox-1" type="checkbox">Вариант</label>
@@ -35,13 +35,11 @@
                         </li>
                     </ul>
                 </form>
-
             </li>
-            <li class="question__item">
+            <li class="question__item question__item_selective">
                 <h2>Вопрос</h2>
-                
                 <form action="">
-                    <ul class="variant__list variant__list_radio">
+                    <ul class="variant__list">
                         <li class="variant__item">
                             <input type="radio" name="var2" id="radio-1">
                             <label for="radio-1" type="radio">Вариант</label>
@@ -59,10 +57,9 @@
                 </form>
 
             </li>
-            <li class="question__item">
+            <li class="question__item question__item_textarea">
                 <h2>Вопрос</h2>
                 <form action="">
-                    
                     <ul class="variant__list">
                         <li class="variant__item">
                             <p>Введите ответ</p>
@@ -71,10 +68,52 @@
                         </li>
                     </ul>
                 </form>
-
             </li>
         </ol>
-        <div class="variant__buttons"><button class="variant__answer">Ответить</button></div>
+        <div class="variant__buttons"><button class="variant__answer" onclick="javascript:myFunction()">Ответить</button></div>
     </main>
+    <script>
+        
+        function myFunction() {
+            let TestData = [];
+            let question_count = 0;
+            const questions = document.getElementsByClassName("question__list");
+            for (let i=0; i < questions.length; i+=1) {
+                let question = questions[i];
+                let question_answers = [];
+                console.log(question);
+                if (question.classList.contains("question__item_selective"))
+                {
+                    let options = question.getElementsByTagName("form")[0].getElementsByTagName("ul")[0].children;
+                    for (let j=0; j<options.length; j++)
+                    {
+                        let option = options[j];
+                        let checkbox = option.getElementsByTagName("input")[0];
+                        if (checkbox.checked)
+                        {
+                            question_answers.push(j.toString());
+                        }
+                    };
+                    let obj = {
+                        "questionId": question_count.toString(),
+                        "answer": question_answers
+                    }
+                    TestData.push(obj);
+                }
+                else if (question.classList.contains("question__item_textarea"))
+                {
+                    let textfield = question.getElementsByTagName("form")[0].getElementsByTagName("ul")[0].children[0].getElementsByTagName("textarea");
+                    
+                    let obj = {
+                        "questionId": question_count.toString(),
+                        "answer": [textfield.value]
+                    }
+                    TestData.push(obj);
+                }
+                question_count+=1;
+            }
+            console.log(TestData);
+        }
+    </script>
 </body>
 </html>
