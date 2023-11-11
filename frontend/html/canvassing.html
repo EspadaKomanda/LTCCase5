@@ -76,41 +76,41 @@
         
         function myFunction() {
             let TestData = [];
-            let question_count = 0;
-            const questions = document.getElementsByClassName("question__list");
-            for (let i=0; i < questions.length; i+=1) {
-                let question = questions[i];
-                let question_answers = [];
-                console.log(question);
-                if (question.classList.contains("question__item_selective"))
+            
+            const questionList = document.querySelector(".question__list");
+            const questionItems = questionList.querySelectorAll(".question__item");
+
+            for (let i=0; i<questionItems.length; i+=1)
+            {
+                const question = questionItems[i];
+                const answers = question.querySelectorAll("input, textarea");
+
+                let answer_sequence = [];
+
+                for (let j=0; j<answers.length; j+=1)
                 {
-                    let options = question.getElementsByTagName("form")[0].getElementsByTagName("ul")[0].children;
-                    for (let j=0; j<options.length; j++)
+                    const answer = answers[j];
+                    if (answer.tagName == "INPUT")
                     {
-                        let option = options[j];
-                        let checkbox = option.getElementsByTagName("input")[0];
-                        if (checkbox.checked)
+                        if (answer.checked)
                         {
-                            question_answers.push(j.toString());
+                            answer_sequence.push( (j+1).toString());
                         }
-                    };
-                    let obj = {
-                        "questionId": question_count.toString(),
-                        "answer": question_answers
                     }
-                    TestData.push(obj);
-                }
-                else if (question.classList.contains("question__item_textarea"))
-                {
-                    let textfield = question.getElementsByTagName("form")[0].getElementsByTagName("ul")[0].children[0].getElementsByTagName("textarea");
-                    
-                    let obj = {
-                        "questionId": question_count.toString(),
-                        "answer": [textfield.value]
+                    else if (answer.tagName == "TEXTAREA")
+                    {
+                        if (answer.value != "")
+                        {
+                            answer_sequence.push(answer.value);
+                        }
                     }
-                    TestData.push(obj);
                 }
-                question_count+=1;
+
+                const obj = {
+                    "questionId": (i+1).toString(),
+                    "answer": answer_sequence
+                }
+                TestData.push(obj);
             }
             console.log(TestData);
         }
