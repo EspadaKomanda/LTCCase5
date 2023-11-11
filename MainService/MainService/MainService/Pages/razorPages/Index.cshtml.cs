@@ -20,6 +20,7 @@ namespace MainService.Pages.razorPages
 
         private ConfigCommunicator _configCommunicator = new ConfigCommunicator();
         private AuthDbCommunicator _authDbCommunicator = new AuthDbCommunicator();
+        private LoggerCommunicator _loggerCommunicator = new LoggerCommunicator();
         public async Task<IActionResult> OnPost()
         {
             var Auth = await _configCommunicator.GetAuth();
@@ -36,6 +37,7 @@ namespace MainService.Pages.razorPages
                     expires: DateTime.UtcNow.Add(TimeSpan.FromDays(1)),
                     signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Auth.KEY)), SecurityAlgorithms.HmacSha256));
                 var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
+                await _loggerCommunicator.CreateLog("Authorization",userModel.email+"Вошёл в аккаунт!")
                 Console.WriteLine("Created token!");
                 HttpContext.Session.SetString("Token", encodedJwt);
                 return RedirectToPage("Profile");
