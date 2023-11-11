@@ -32,44 +32,81 @@
         </div>
         <section class="employees">
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/ph.png" alt="" width="110px">
+                <img src="../img/ph.png" alt="" width="165px">
                 <p class="employees__full-name">Фамилия Имя Отчество</p>
                 <p class="employees__pos">Должность</p>
             </div>
             <div class="employees__item">
-                <img src="../img/icon.svg" alt="" width="110px">
+                <button class="button-for-popup" style="border-radius: 50%; border: 0; background-color: #222A35;"><img src="../img/icon.svg" alt="" width="165px" onclick="javascript:myFunction()"></button>
+            </div>
+            <div class="container-employees" id="cont-empl">
+                <div class="Your-letter">
+                    <br>
+                    <h2>Добавить сотрудника</h2>
+                    <input type="text">
+                    <br>
+                    <div class="dropdown">
+                        <div id="myDropdown" class="dropdown-content">
+                          <a href="#">Link 1</a>
+                          <a href="#">Link 2</a>
+                          <a href="#">Link 3</a>
+                        </div>
+                      </div>
+                    <br>
+                    <input type="text" placeholder="ФИО">
+                    <br>
+                    <input type="email" placeholder="Телефон" pattern="/^[\а-яa-z\-\./d\_]+@([\а-яa-z\-/d\_]+\.)+[\а-яa-z\-/d\_]{2,}$/gi;" required>
+                    <br>
+                    <input type="tel" id="phone" name="phone" placeholder="Почта" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+                    <br>
+                    <button>Ок</button>
+                    <br>
+                    <button class="exit" style=" float: left;" onclick="javascript:exitFunction()"><p>Назад</p></button>
+                </div>
             </div>
         </section>
     </main>
+    <script>
+        console.log(document.getElementsByClassName("container-employees").classList)  
+
+        function myFunction() {
+            document.getElementById("cont-empl").classList.toggle("container-employees-show");
+        }
+
+        function exitFunction() {
+            document.getElementById("cont-empl").classList.remove("container-employees-show");
+        }
+    </script>
+
 </body>
 </html>
