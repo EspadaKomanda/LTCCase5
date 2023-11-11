@@ -31,13 +31,41 @@ body main .question__list .question__item {
   border-radius: 10px;
   margin-bottom: 30px;
   position: relative;
-  padding: 10px 15px 15px 15px;
+  padding: 10px 15px 25px 15px;
 }
 body main .question__list .question__item h2 {
   margin-bottom: 80px;
 }
 body main .question__list .question__item .variant__list {
   margin-bottom: 40px;
+}
+body main .question__list .question__item .variant__list .question-type {
+  /* The container <div> - needed to position the dropdown content */
+  /* Dropdown Content (Hidden by Default) */
+  /* Links inside the dropdown */
+}
+body main .question__list .question__item .variant__list .question-type .dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: min(320px, 80%);
+  margin-bottom: 20px;
+}
+body main .question__list .question__item .variant__list .question-type .dropdown-content {
+  background-color: #222A35;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+body main .question__list .question__item .variant__list .question-type .dropdown-content a {
+  color: #fff;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+body main .question__list .question__item .variant__list .question-type .dropdown-content a:hover {
+  background-color: #222A35;
 }
 body main .question__list .question__item .variant__list .variant__item {
   font-size: 20px;
@@ -102,6 +130,12 @@ body main .question__list .question__item .variant__list .variant__item textarea
   color: #fff;
   min-width: min(600px, 80%);
   height: 100px;
+}
+body main .question__list .question__item .variant__list .variant__item .variant-for-question {
+  background-color: #222A35;
+  border: 0;
+  border-radius: 10px;
+  color: #fff;
 }
 body main .question__list .question__item .variant__buttons {
   justify-content: end;

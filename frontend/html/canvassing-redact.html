@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/canvassing/canvassing.css">
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Анкитирование</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">Пожалуйста, пройдите анкетирование, чтобы Ваш работодатель лучше узнал Вас</h1>
+    </header>
+    <main>
+        <ol class="question__list">
+            <li class="question__item question__item_selective">
+                <h2>Вопрос</h2>
+               <form action="">
+                    <ul class="variant__list">
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-1">
+                            <label for="checkbox-1" type="checkbox">Вариант</label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-2">
+                            <label for="checkbox-2" type="checkbox">Вариант</label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-3">
+                            <label for="checkbox-3" type="checkbox">Вариант</label>
+                        </li>
+                        <button style="border-radius: 5px; background-color: #73F9CF; border: 0; padding: 2px; float: right;"><img src="../img/edit (1) 1.png" alt=""></button>
+                        <button class="variant__answer" style="font-size: 40px; padding: 0px 10px; margin-right: 10px; float: right; margin-bottom: 20px;">—</button>        
+                    </ul>
+                </form>
+            </li>
+            <li class="question__item question__item_textarea">
+                <form action="">
+                    <ul class="variant__list">
+                        <li class="variant__item">
+                            <textarea name=""></textarea>
+                        </li>
+                        <div class="question-type">
+                            <span>Тип вопроса: </span> 
+                            <div class="dropdown">
+                                <div id="myDropdown" class="dropdown-content">
+                                  <a href="#">Несколько ответов</a>
+                                  <a href="#">Один ответ</a>
+                                  <a href="#">Поле ввода</a>
+                                </div>
+                            </div>
+                            <span>Кол-во ответов: </span> 
+                            <input type="text" style="background-color: #222A35; border: 0; border-radius: 10px; padding: 10px;">
+                        </div>
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-for-question1">
+                            <label for="checkbox-for-question1" type="checkbox"><input type="text" class="variant-for-question"></label>
+                        </li>
+                        <li class="variant__item">
+                            <input type="checkbox" name="var1" id="checkbox-for-question1">
+                            <label for="checkbox-for-question1" type="checkbox"><input type="text" class="variant-for-question"></label>
+                        </li>
+                    </ul>
+                    <button style="padding: 10px 15px; background-color: #73F9CF; border: 0; border-radius: 10px; font-size: 20px; font-weight: 700;">Сохранить</button>
+                </form>
+            </li>
+        </ol>
+        <div class="variant__buttons"><button class="variant__answer" style="font-size: 40px;">+</button></div>
+    </main>
+</body>
+</html>

@@ -94,11 +94,6 @@ main .employees .employees__item .employees__full-name {
   box-shadow: 0px 0px 8px 8px #54001e;
   min-width: min(500px, 80%);
   border-radius: 9px;
-  /* The container <div> - needed to position the dropdown content */
-  /* Dropdown Content (Hidden by Default) */
-  /* Links inside the dropdown */
-  /* Change color of dropdown links on hover */
-  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 }
 .container-employees .dropdown {
   position: relative;
@@ -143,7 +138,4 @@ main .employees .employees__item .employees__full-name {
 }
 .container-employees input:first-of-type {
   margin: 0;
-}
-.container-employees-show {
-  display: block;
 }

@@ -35,7 +35,7 @@ body {
                 border-radius: 10px;
                 margin-bottom: 30px;
                 position: relative;
-                padding: 10px 15px 15px 15px;
+                padding: 10px 15px 25px 15px;
 
                 h2 {
                     margin-bottom: 80px;
@@ -43,6 +43,39 @@ body {
 
                 .variant__list {
                     margin-bottom: 40px;
+                        
+                    .question-type {
+                        
+                        /* The container <div> - needed to position the dropdown content */
+                        .dropdown {
+                            position: relative;
+                            display: inline-block;
+                            min-width: min(320px, 100% - 20px);
+                            margin-bottom: 20px;
+                        }
+                        
+                        /* Dropdown Content (Hidden by Default) */
+                        .dropdown-content {
+                            background-color: #222A35;
+                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                            z-index: 10;
+                            border-radius: 10px;
+                            margin-left: 10px;
+                            margin-right: 20px;
+                        }
+                        
+                        /* Links inside the dropdown */
+                        .dropdown-content a {
+                            color: #fff;
+                            padding: 12px 16px;
+                            text-decoration: none;
+                            display: block;
+                        }
+                    
+                        .dropdown-content a:hover {
+                            background-color: #222A35;
+                        }
+                    }
 
                     .variant__item {
                         font-size: 20px;
@@ -113,6 +146,13 @@ body {
                             color: #fff;
                             min-width:min(600px, 100% - 20px);
                             height: 100px;
+                        }
+
+                        .variant-for-question {
+                            background-color: #222A35;
+                            border: 0;
+                            border-radius: 10px;
+                            color: #fff;
                         }
                     }
                 }
